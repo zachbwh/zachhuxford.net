@@ -5,24 +5,24 @@ on:
     branches-ignore:
       - master
 jobs:
-  jest-tests:
+  biome-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version-file: ".tool-versions"
       - run: npm install
-      - run: npm test
+      - run: npm run lint
   build:
     runs-on: ubuntu-latest
     env:
       PUBLIC_URL: zachhuxford.io
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version-file: ".tool-versions"
       - run: npm install
       - run: npm run build
       - uses: actions/upload-pages-artifact@master
