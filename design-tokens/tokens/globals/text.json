@@ -75,7 +75,7 @@
           "fontFamily": "{text.fonts.montserrat}",
           "fontWeight": "{text.weights.regular}",
           "fontSize": "{text.sizes.body}",
-          "lineHeight": "{text.lineHeights.normal}"
+          "lineHeight": "{text.lineHeights.large}"
         }
       },
       "code": {
@@ -83,7 +83,7 @@
           "fontFamily": "{text.fonts.inconsolata}",
           "fontWeight": "{text.weights.regular}",
           "fontSize": "{text.sizes.body}",
-          "lineHeight": "{text.lineHeights.normal}"
+          "lineHeight": "{text.lineHeights.large}"
         }
       }
     }
