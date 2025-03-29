@@ -63,7 +63,7 @@ export default defineConfig({
       },
     },
     semanticTokens: {
-      ...tokensPandaDark["semantic-tokens"],
+      ...tokensPandaPurple["semantic-tokens"],
     },
   },
 

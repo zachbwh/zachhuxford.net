@@ -10,7 +10,7 @@
       "background": {
         "main-accent": {
           "$type": "color",
-          "$value": "{colors.purple.900}"
+          "$value": "{colors.mauve.700}"
         }
       }
     }
