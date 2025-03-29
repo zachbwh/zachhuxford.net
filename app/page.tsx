@@ -1,12 +1,19 @@
 import Image from "next/image";
 // import styles from "./page.module.css";
 import { css } from "@styled-system/css";
-import { container, center } from "@styled-system/patterns";
+import { container, stack } from "@styled-system/patterns";
 import { Text } from "@components/Text";
 
 export default function Home() {
   return (
-    <div className={container({})}>
+    <div
+      className={stack({
+        direction: "column",
+        gap: 4,
+        justifyContent: "center",
+        minHeight: "100dvh",
+      })}
+    >
       <Text textStyle="body" as="p">
         It's me!
       </Text>
