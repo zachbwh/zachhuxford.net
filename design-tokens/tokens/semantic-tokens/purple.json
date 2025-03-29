@@ -1,0 +1,18 @@
+{
+  "semantic-tokens": {
+    "colors": {
+      "foreground": {
+        "main-accent": {
+          "$type": "color",
+          "$value": "{colors.white}"
+        }
+      },
+      "background": {
+        "main-accent": {
+          "$type": "color",
+          "$value": "{colors.purple.900}"
+        }
+      }
+    }
+  }
+}

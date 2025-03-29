@@ -1,7 +1,11 @@
 import { defineConfig, defineTextStyles } from "@pandacss/dev";
-import tokens from "@design-tokens/js/tokens";
+import tokensDark from "@design-tokens/js/dark/tokens";
+import tokensPurple from "@design-tokens/js/purple/tokens";
 
-const typographyTokens = Object.entries(tokens.text.typography);
+import tokensPandaDark from "@design-tokens/js/dark/tokens-panda";
+import tokensPandaPurple from "@design-tokens/js/purple/tokens-panda";
+
+const typographyTokens = Object.entries(tokensDark.text.typography);
 
 type PandaTextStyle = {
   value: {
@@ -43,10 +47,23 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
+  conditions: {
+    darkTheme: "[data-theme=dark] &",
+    purpleTheme: "[data-theme=purple] &",
+  },
+
   // Useful for theme customization
   theme: {
     extend: {
       textStyles,
+      tokens: {
+        colors: {
+          ...tokensPandaDark.colors,
+        },
+      },
+    },
+    semanticTokens: {
+      ...tokensPandaDark["semantic-tokens"],
     },
   },
 

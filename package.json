@@ -2,6 +2,7 @@
   "name": "zachhuxford.io",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev --turbopack",
@@ -9,7 +10,7 @@
     "start": "next start",
     "lint": "npx @biomejs/biome check",
     "lint:fix": "npx @biomejs/biome check --write",
-    "build:tokens": "cd design-tokens && npx style-dictionary build"
+    "build:tokens": "cd design-tokens && node tokens/build.js"
   },
   "dependencies": {
     "next": "15.2.3",

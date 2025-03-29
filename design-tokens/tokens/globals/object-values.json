@@ -1,25 +1,4 @@
 {
-  "text": {
-    "typography": {
-      "$type": "typography",
-      "heading": {
-        "$value": {
-          "fontFamily": "{text.fonts.sans}",
-          "fontWeight": "{text.weights.bold}",
-          "fontSize": "{dimensions.7}",
-          "lineHeight": "{text.lineHeights.large}"
-        }
-      },
-      "body": {
-        "$value": {
-          "fontFamily": "{text.fonts.serif}",
-          "fontWeight": "{text.weights.regular}",
-          "fontSize": "{dimensions.4}",
-          "lineHeight": "{text.lineHeights.normal}"
-        }
-      }
-    }
-  },
   "transitions": {
     "$type": "transition",
     "emphasis": {

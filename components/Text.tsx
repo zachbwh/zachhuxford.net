@@ -2,6 +2,9 @@ import { cva, type RecipeVariantProps } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
 
 const textStyleRecipe = cva({
+  base: {
+    color: "foreground.main-accent",
+  },
   variants: {
     textStyle: {
       display: {

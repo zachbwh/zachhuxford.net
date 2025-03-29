@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Karla, Inconsolata, Montserrat } from "next/font/google";
 import "./globals.css";
+import { css } from "@styled-system/css";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${karla.variable} ${monsterrat.variable} ${inconsolata.variable}`}
+        className={`${karla.variable} ${monsterrat.variable} ${inconsolata.variable} ${css({ backgroundColor: "background.main-accent" })}`}
       >
         {children}
       </body>
