@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
@@ -16,9 +17,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@pandacss/dev": "^0.53.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "style-dictionary": "^4.3.3",
     "typescript": "^5"
   }
 }
