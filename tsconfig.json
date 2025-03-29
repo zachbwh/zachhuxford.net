@@ -19,9 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
       "@styled-system/*": ["./styled-system/*"],
-      "@design-tokens/*": ["./design-tokens/build/*"]
+      "@design-tokens/*": ["./design-tokens/build/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

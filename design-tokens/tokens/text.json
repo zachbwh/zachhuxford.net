@@ -28,13 +28,19 @@
     "weights": {
       "$type": "fontWeight",
       "light": {
-        "$value": "thin"
+        "$value": "300"
       },
       "regular": {
-        "$value": "regular"
+        "$value": "400"
+      },
+      "medium": {
+        "$value": "500"
+      },
+      "semibold": {
+        "$value": "600"
       },
       "bold": {
-        "$value": "extra-bold"
+        "$value": "700"
       }
     },
     "lineHeights": {
@@ -51,7 +57,7 @@
       "display": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.bold}",
+          "fontWeight": "{text.weights.regular}",
           "fontSize": "{text.sizes.display}",
           "lineHeight": "{text.lineHeights.large}"
         }
