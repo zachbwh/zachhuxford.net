@@ -1,7 +1,7 @@
 import Image from "next/image";
 // import styles from "./page.module.css";
-import { css } from "../styled-system/css";
-import { center } from "../styled-system/patterns";
+import { css } from "@styled-system/css";
+import { center } from "@styled-system/patterns";
 
 export default function Home() {
   return (

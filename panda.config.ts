@@ -1,5 +1,5 @@
 import { defineConfig, defineTextStyles } from "@pandacss/dev";
-import tokens from "./design-tokens/build/js/tokens";
+import tokens from "@design-tokens/js/tokens";
 
 const typographyTokens = Object.entries(tokens.text.typography);
 
