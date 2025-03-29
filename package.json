@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "npx @biomejs/biome check",
-    "lint:fix": "npx @biomejs/biome check --write"
+    "lint:fix": "npx @biomejs/biome check --write",
+    "build:tokens": "cd design-tokens && npx style-dictionary build"
   },
   "dependencies": {
     "next": "15.2.3",
