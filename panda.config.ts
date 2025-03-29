@@ -31,8 +31,6 @@ const textStyleDefinitions = typographyTokens.reduce(
   {} as Record<string, PandaTextStyle>
 );
 
-console.log("textStyleDefinitions", textStyleDefinitions);
-
 const textStyles = defineTextStyles(textStyleDefinitions);
 
 export default defineConfig({
