@@ -32,7 +32,7 @@ type TextTags =
 
 export type TextProps = {
   children: React.ReactNode;
-  textStyle?: TextStyleVariants;
+  textStyle: TextStyleVariants;
   as?: TextTags;
 };
 
