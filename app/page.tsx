@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 // import styles from "./page.module.css";
 import { css } from "@styled-system/css";
@@ -36,6 +37,17 @@ export default function Home() {
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.
       </Text>
+      <label htmlFor="theme-select">Choose a theme:</label>
+      <select
+        name="theme"
+        id="theme-select"
+        onChange={(e) =>
+          document.documentElement.setAttribute("data-theme", e.target.value)
+        }
+      >
+        <option value="purple">Purple</option>
+        <option value="dark">Dark</option>
+      </select>
     </div>
   );
 }
