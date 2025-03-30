@@ -61,8 +61,6 @@ const mergedSemanticTokens = mergeSemanticTokens([
   { name: "purpleTheme", tokens: tokensPandaPurple["semantic-tokens"] },
 ]);
 
-const typographyTokens = Object.entries(tokensDark.text.typography);
-
 type PandaTextStyle = {
   value: {
     fontFamily: string;
@@ -72,6 +70,7 @@ type PandaTextStyle = {
   };
 };
 
+const typographyTokens = Object.entries(tokensDark.text.typography);
 const textStyleDefinitions = typographyTokens.reduce(
   (acc, [name, designToken]) => {
     const designTokenValue = designToken.$value;
@@ -90,7 +89,6 @@ const textStyleDefinitions = typographyTokens.reduce(
   },
   {} as Record<string, PandaTextStyle>
 );
-
 const textStyles = defineTextStyles(textStyleDefinitions);
 
 export default defineConfig({
@@ -116,19 +114,15 @@ export default defineConfig({
         colors: {
           ...tokensPandaDark.colors,
         },
+        spacing: {
+          ...tokensPandaDark.dimensions,
+        },
+        sizes: {
+          ...tokensPandaDark.dimensions,
+        },
       },
     },
     semanticTokens: mergedSemanticTokens,
-    // semanticTokens: {
-    //   colors: {
-    //     blue: {
-    //       value: {
-    //         _dark: tokensPandaDark.colors.blue,
-    //         _purple: tokensPandaPurple.colors.blue,
-    //       },
-    //     },
-    //   },
-    // },
   },
 
   jsxFramework: "react",

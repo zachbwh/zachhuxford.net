@@ -1,9 +1,7 @@
 "use client";
-import Image from "next/image";
-// import styles from "./page.module.css";
-import { css } from "@styled-system/css";
-import { container, stack } from "@styled-system/patterns";
+import { stack } from "@styled-system/patterns";
 import { Text } from "@components/Text";
+import { Avatar } from "@components/Avatar";
 
 export default function Home() {
   return (
@@ -23,6 +21,10 @@ export default function Home() {
         <Text textStyle="inherit" color="secondaryAccent">
           .
         </Text>
+        <Avatar
+          size="lg"
+          src="https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300"
+        />
       </Text>
       <Text textStyle="body" as="p">
         I'm a Software Developer from New Zealand. I care about my work having a

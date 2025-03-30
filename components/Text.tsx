@@ -1,7 +1,7 @@
 import { cva, type RecipeVariantProps } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
 
-const textStyleRecipe = cva({
+const textRecipe = cva({
   variants: {
     textStyle: {
       display: {
@@ -22,7 +22,7 @@ const textStyleRecipe = cva({
   },
 });
 
-type TextVariants = RecipeVariantProps<typeof textStyleRecipe>;
+type TextVariants = RecipeVariantProps<typeof textRecipe>;
 type TextStyleVariants =
   | NonNullable<NonNullable<TextVariants>["textStyle"]>
   | "inherit";
@@ -53,7 +53,7 @@ export const Text = ({
   color = "onMainAccent",
   as = "span",
 }: TextProps) => {
-  const Tag = styled(as, textStyleRecipe);
+  const Tag = styled(as, textRecipe);
   return (
     <Tag
       textStyle={textStyle !== "inherit" ? textStyle : undefined}
