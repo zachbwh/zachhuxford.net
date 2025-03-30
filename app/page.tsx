@@ -19,7 +19,10 @@ export default function Home() {
         It's me!
       </Text>
       <Text textStyle="display">
-        Zach Huxford<Text textStyle="inherit">.</Text>
+        Zach Huxford
+        <Text textStyle="inherit" color="secondaryAccent">
+          .
+        </Text>
       </Text>
       <Text textStyle="body" as="p">
         I'm a Software Developer from New Zealand. I care about my work having a

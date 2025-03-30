@@ -2,9 +2,6 @@ import { cva, type RecipeVariantProps } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
 
 const textStyleRecipe = cva({
-  base: {
-    color: "foreground.main-accent",
-  },
   variants: {
     textStyle: {
       display: {
@@ -14,6 +11,14 @@ const textStyleRecipe = cva({
         textStyle: "body",
       },
     },
+    color: {
+      onMainAccent: {
+        color: "foreground.on-main-accent",
+      },
+      secondaryAccent: {
+        color: "foreground.secondary-accent",
+      },
+    },
   },
 });
 
@@ -21,6 +26,8 @@ type TextVariants = RecipeVariantProps<typeof textStyleRecipe>;
 type TextStyleVariants =
   | NonNullable<NonNullable<TextVariants>["textStyle"]>
   | "inherit";
+type ColorVariants = NonNullable<NonNullable<TextVariants>["color"]>;
+
 type TextTags =
   | "p"
   | "h1"
@@ -36,13 +43,22 @@ type TextTags =
 export type TextProps = {
   children: React.ReactNode;
   textStyle: TextStyleVariants;
+  color?: ColorVariants;
   as?: TextTags;
 };
 
-export const Text = ({ children, textStyle, as = "span" }: TextProps) => {
+export const Text = ({
+  children,
+  textStyle,
+  color = "onMainAccent",
+  as = "span",
+}: TextProps) => {
   const Tag = styled(as, textStyleRecipe);
   return (
-    <Tag textStyle={textStyle !== "inherit" ? textStyle : undefined}>
+    <Tag
+      textStyle={textStyle !== "inherit" ? textStyle : undefined}
+      color={color}
+    >
       {children}
     </Tag>
   );

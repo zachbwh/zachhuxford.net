@@ -2,9 +2,13 @@
   "semantic-tokens": {
     "colors": {
       "foreground": {
-        "main-accent": {
+        "on-main-accent": {
           "$type": "color",
           "$value": "{colors.white}"
+        },
+        "secondary-accent": {
+          "$type": "color",
+          "$value": "{colors.emerald.700}"
         }
       },
       "background": {
