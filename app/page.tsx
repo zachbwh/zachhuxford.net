@@ -2,15 +2,17 @@
 import { stack } from "@styled-system/patterns";
 import { Text } from "@components/Text";
 import { Avatar } from "@components/Avatar";
+import { Box } from "@styled-system/jsx";
 
 export default function Home() {
   return (
     <div
       className={stack({
         direction: "column",
-        gap: 4,
+        gap: "4",
+        paddingInline: "10",
         justifyContent: "center",
-        minHeight: "100dvh",
+        minHeight: "[100dvh]",
       })}
     >
       <Text textStyle="body" as="p">
@@ -21,16 +23,15 @@ export default function Home() {
         <Text textStyle="inherit" color="secondaryAccent">
           .
         </Text>
-        <Avatar
-          size="lg"
-          src="https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300"
-        />
+        <Box display="inline-block" verticalAlign="sub" paddingLeft="10">
+          <Avatar
+            size="lg"
+            src="https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300"
+          />
+        </Box>
       </Text>
       <Text textStyle="body" as="p">
-        I'm a Software Developer from New Zealand. I care about my work having a
-        positive impact on other people, which is why it is important to me that
-        my work has a strong human component, whether it is by creating
-        something useful or something beautiful.
+        I'm a Software Developer from New Zealand.
       </Text>
       <Text textStyle="body" as="p">
         I like to spend my spare time browsing wikipedia, reading, listening to

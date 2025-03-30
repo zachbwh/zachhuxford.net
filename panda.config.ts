@@ -106,27 +106,25 @@ export default defineConfig({
     purpleTheme: "[data-theme=purple] &",
   },
 
-  // Useful for theme customization
   theme: {
-    extend: {
-      textStyles,
-      tokens: {
-        colors: {
-          ...tokensPandaDark.colors,
-        },
-        spacing: {
-          ...tokensPandaDark.dimensions,
-        },
-        sizes: {
-          ...tokensPandaDark.dimensions,
-        },
+    textStyles,
+    tokens: {
+      colors: {
+        ...tokensPandaDark.colors,
+      },
+      spacing: {
+        ...tokensPandaDark.dimensions,
+      },
+      sizes: {
+        ...tokensPandaDark.dimensions,
       },
     },
     semanticTokens: mergedSemanticTokens,
   },
+  strictTokens: true,
+  strictPropertyValues: true,
 
   jsxFramework: "react",
 
-  // The output directory for your css system
   outdir: "styled-system",
 });

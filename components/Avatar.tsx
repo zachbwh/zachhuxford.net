@@ -4,7 +4,6 @@ import { styled } from "@styled-system/jsx";
 const avatarRecipe = cva({
   base: {
     borderRadius: "50%",
-    display: "inline-block",
   },
   variants: {
     size: {
