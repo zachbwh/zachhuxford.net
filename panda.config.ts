@@ -1,9 +1,65 @@
-import { defineConfig, defineTextStyles } from "@pandacss/dev";
+import {
+  defineConfig,
+  defineTextStyles,
+  type SemanticTokens,
+} from "@pandacss/dev";
 import tokensDark from "@design-tokens/js/dark/tokens";
-import tokensPurple from "@design-tokens/js/purple/tokens";
+import tokensBase from "@design-tokens/js/purple/tokens";
 
 import tokensPandaDark from "@design-tokens/js/dark/tokens-panda";
 import tokensPandaPurple from "@design-tokens/js/purple/tokens-panda";
+
+type RecursiveSemanticToken = SemanticTokens[keyof SemanticTokens];
+const mergeSemanticTokens = (
+  themedSemanticTokens: { name: string; tokens: SemanticTokens }[]
+) => {
+  const _mergeRecursiveSemanticTokens = (
+    name: string,
+    obj: RecursiveSemanticToken,
+    mergedTokens: NonNullable<RecursiveSemanticToken>
+  ) => {
+    if (!obj) {
+      return mergedTokens;
+    }
+    Object.keys(obj).forEach((key) => {
+      if (key === "value") {
+        if (!mergedTokens.value) {
+          mergedTokens.value = {};
+        }
+        if (typeof mergedTokens.value === "object") {
+          mergedTokens.value[`_${name}`] = obj[key];
+        }
+      }
+
+      if (
+        typeof obj[key] === "object" &&
+        obj[key] !== null &&
+        !Array.isArray(obj[key])
+      ) {
+        if (!mergedTokens[key]) {
+          mergedTokens[key] = {} as NonNullable<RecursiveSemanticToken>;
+        }
+        _mergeRecursiveSemanticTokens(name, obj[key], mergedTokens[key]);
+      }
+    });
+
+    return mergedTokens;
+  };
+  return themedSemanticTokens.reduce((acc, { name, tokens }) => {
+    return Object.entries(tokens).reduce((acc, [key, recursiveToken]) => {
+      const mergedRecursiveToken: RecursiveSemanticToken =
+        acc[key as keyof SemanticTokens] || {};
+      _mergeRecursiveSemanticTokens(name, recursiveToken, mergedRecursiveToken);
+      acc[key as keyof SemanticTokens] = mergedRecursiveToken;
+      return acc;
+    }, acc);
+  }, {} as SemanticTokens);
+};
+
+const mergedSemanticTokens = mergeSemanticTokens([
+  { name: "darkTheme", tokens: tokensPandaDark["semantic-tokens"] },
+  { name: "purpleTheme", tokens: tokensPandaPurple["semantic-tokens"] },
+]);
 
 const typographyTokens = Object.entries(tokensDark.text.typography);
 
@@ -62,9 +118,17 @@ export default defineConfig({
         },
       },
     },
-    semanticTokens: {
-      ...tokensPandaPurple["semantic-tokens"],
-    },
+    semanticTokens: mergedSemanticTokens,
+    // semanticTokens: {
+    //   colors: {
+    //     blue: {
+    //       value: {
+    //         _dark: tokensPandaDark.colors.blue,
+    //         _purple: tokensPandaPurple.colors.blue,
+    //       },
+    //     },
+    //   },
+    // },
   },
 
   jsxFramework: "react",
