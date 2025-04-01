@@ -17,6 +17,12 @@
           "$value": "{colors.slate.900}"
         }
       }
+    },
+    "borders": {
+      "outline": {
+        "$type": "border",
+        "$value": "{dimensions.1} {borders.styles.solid} {colors.slate.500}"
+      }
     }
   }
 }

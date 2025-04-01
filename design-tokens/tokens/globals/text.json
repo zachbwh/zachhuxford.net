@@ -59,7 +59,7 @@
           "fontFamily": "{text.fonts.karla}",
           "fontWeight": "{text.weights.regular}",
           "fontSize": "{text.sizes.display}",
-          "lineHeight": "{text.lineHeights.large}"
+          "lineHeight": "{text.lineHeights.normal}"
         }
       },
       "heading": {

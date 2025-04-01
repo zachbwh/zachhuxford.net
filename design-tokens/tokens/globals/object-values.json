@@ -45,27 +45,21 @@
     "heavy": {
       "$value": {
         "color": "{colors.black}",
-        "width": "{dimensions.1}",
+        "width": "1px",
         "style": "{borders.styles.solid}"
       }
     },
     "wireframe": {
       "$value": {
         "color": "{colors.orange.600}",
-        "width": "{dimensions.2}",
-        "style": "{borders.styles.dashed}"
+        "width": "1px",
+        "style": "{borders.styles.solid}"
       }
     },
     "styles": {
       "$type": "strokeStyle",
       "solid": {
         "$value": "solid"
-      },
-      "dashed": {
-        "$value": {
-          "dashArray": ["0.5rem", "0.25rem"],
-          "lineCap": "round"
-        }
       }
     }
   },

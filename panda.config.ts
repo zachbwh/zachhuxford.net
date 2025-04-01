@@ -118,6 +118,8 @@ export default defineConfig({
       sizes: {
         ...tokensPandaDark.dimensions,
       },
+      borders: { ...tokensPandaDark.borders },
+      radii: { ...tokensPandaDark.dimensions },
     },
     semanticTokens: mergedSemanticTokens,
   },

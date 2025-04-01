@@ -3,6 +3,7 @@ import { stack } from "@styled-system/patterns";
 import { Text } from "@components/Text";
 import { Avatar } from "@components/Avatar";
 import { Box } from "@styled-system/jsx";
+import { Popover } from "@components/Popover";
 
 export default function Home() {
   return (
@@ -43,6 +44,15 @@ export default function Home() {
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.
       </Text>
+      <Popover
+        renderReferenceComponent={({ setReference, referenceProps }) => (
+          <button ref={setReference} type="button" {...referenceProps}>
+            Button
+          </button>
+        )}
+      >
+        Test
+      </Popover>
       <label htmlFor="theme-select">Choose a theme:</label>
       <select
         name="theme"

@@ -47,15 +47,7 @@ const stripMetaProps = (tokens, options) => {
   const { stripMeta, usesDtcg } = options;
   let opts = /** @type {StripMetaOptions} */ ({ usesDtcg });
 
-  // if (stripMeta) {
-  // if (stripMeta === true) {
   opts.strip = sdMetaProps;
-  // } else {
-  //   opts = {
-  //     usesDtcg: usesDtcg ?? false,
-  //     ...stripMeta,
-  //   };
-  // }
   tokens = stripMetaUtil(tokens, opts);
   // }
   return tokens;
@@ -85,7 +77,7 @@ const customFormats = {
       2
     );
 
-    const content = `${header}export default ${dictionaryString};\n`;
+    const content = `${header}export default ${dictionaryString} as const;\n`;
     return content;
   },
 };
@@ -110,7 +102,7 @@ function getStyleDictionaryConfig(theme) {
             format: javascriptEsm,
           },
           {
-            destination: "tokens-panda.js",
+            destination: "tokens-panda.ts",
             format: pandaCssEsm,
           },
           // {
