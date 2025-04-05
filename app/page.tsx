@@ -3,7 +3,7 @@ import { stack } from "@styled-system/patterns";
 import { Text } from "@components/Text";
 import { Avatar } from "@components/Avatar";
 import { Box } from "@styled-system/jsx";
-import { Popover } from "@components/Popover";
+import { Dropdown } from "@components/Dropdown";
 
 export default function Home() {
   return (
@@ -44,26 +44,21 @@ export default function Home() {
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.
       </Text>
-      <Popover
+      <Dropdown
         renderReferenceComponent={({ setReference, referenceProps }) => (
           <button ref={setReference} type="button" {...referenceProps}>
-            Button
+            Pick Theme
           </button>
         )}
+        onItemAction={(key) => {
+          document.documentElement.setAttribute("data-theme", key);
+        }}
       >
-        Test
-      </Popover>
-      <label htmlFor="theme-select">Choose a theme:</label>
-      <select
-        name="theme"
-        id="theme-select"
-        onChange={(e) =>
-          document.documentElement.setAttribute("data-theme", e.target.value)
-        }
-      >
-        <option value="purple">Purple</option>
-        <option value="dark">Dark</option>
-      </select>
+        {[
+          { label: "Purple", value: "purple", id: "purple" },
+          { label: "Dark", value: "dark", id: "dark" },
+        ]}
+      </Dropdown>
     </div>
   );
 }

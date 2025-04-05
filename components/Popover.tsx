@@ -1,14 +1,13 @@
-import { cva, type RecipeVariantProps } from "@styled-system/css";
+import { cva } from "@styled-system/css";
 import {
   useFloating,
   useInteractions,
   useClick,
-  useFocus,
   autoUpdate,
   FloatingFocusManager,
   useDismiss,
-  useTransitionStyles,
   useTransitionStatus,
+  type UseInteractionsReturn,
 } from "@floating-ui/react";
 import { useState } from "react";
 
@@ -34,21 +33,31 @@ const popoverRecipe = cva({
   },
 });
 
+type RenderReferenceComponent = ({
+  setReference,
+  referenceProps,
+}: {
+  setReference: (node: Element | null) => void;
+  referenceProps: Record<string, unknown>;
+}) => React.ReactElement;
+
+type PopoverChildrenWithItems = ({
+  getItemProps,
+}: {
+  getItemProps: UseInteractionsReturn["getItemProps"];
+}) => React.ReactNode;
+
 export type PopoverProps = {
-  renderReferenceComponent: ({
-    setReference,
-    referenceProps,
-  }: {
-    setReference: (node: Element | null) => void;
-    referenceProps: Record<string, unknown>;
-  }) => React.ReactElement;
-  children: React.ReactNode;
+  renderReferenceComponent: RenderReferenceComponent;
+  children: React.ReactNode | PopoverChildrenWithItems;
 };
 
-export const Popover = ({
-  renderReferenceComponent,
-  children,
-}: PopoverProps) => {
+/**
+ * Hook to manage common popover state and interactions.
+ * Compose this hook with `PopoverBase` and additional interactions for custom behaviour.
+ * @see {@link PopoverBase}
+ */
+export const usePopover = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     whileElementsMounted: autoUpdate,
@@ -58,18 +67,41 @@ export const Popover = ({
   });
 
   const click = useClick(context);
-  const focus = useFocus(context);
   const dismiss = useDismiss(context);
 
   const { isMounted, status: transitionStatus } = useTransitionStatus(context, {
     duration: 100,
   });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    focus,
-    dismiss,
-  ]);
+  return {
+    refs,
+    floatingStyles,
+    interactions: [click, dismiss],
+    isMounted,
+    transitionStatus,
+    context,
+  };
+};
+
+export type PopoverBaseProps = ReturnType<typeof usePopover> & PopoverProps;
+
+/**
+ * Base popover component.
+ * Compose this component with the `usePopover` hook to create a popover.
+ * @see {@link usePopover}
+ */
+export const PopoverBase = ({
+  renderReferenceComponent,
+  refs,
+  floatingStyles,
+  interactions,
+  isMounted,
+  transitionStatus,
+  context,
+  children,
+}: PopoverBaseProps) => {
+  const { getReferenceProps, getFloatingProps, getItemProps } =
+    useInteractions(interactions);
 
   return (
     <>
@@ -86,10 +118,46 @@ export const Popover = ({
             className={popoverRecipe()}
             data-status={transitionStatus}
           >
-            {children}
+            {typeof children === "function"
+              ? children({ getItemProps })
+              : children}
           </div>
         </FloatingFocusManager>
       )}
     </>
+  );
+};
+
+/**
+ * Basic popover with common interactions.
+ * To extend the popover, compose the `PopoverBase` component with the `usePopover` hook.
+ * @see {@link PopoverBase}
+ * @see {@link usePopover}
+ */
+export const Popover = ({
+  renderReferenceComponent,
+  children,
+}: PopoverProps) => {
+  const {
+    refs,
+    floatingStyles,
+    interactions,
+    isMounted,
+    transitionStatus,
+    context,
+  } = usePopover();
+
+  return (
+    <PopoverBase
+      refs={refs}
+      floatingStyles={floatingStyles}
+      interactions={interactions}
+      isMounted={isMounted}
+      transitionStatus={transitionStatus}
+      context={context}
+      renderReferenceComponent={renderReferenceComponent}
+    >
+      {children}
+    </PopoverBase>
   );
 };
