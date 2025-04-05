@@ -4,6 +4,7 @@ import { Text } from "@components/Text";
 import { Avatar } from "@components/Avatar";
 import { Box } from "@styled-system/jsx";
 import { Dropdown } from "@components/Dropdown";
+import { Button } from "@components/Button";
 
 export default function Home() {
   return (
@@ -46,9 +47,14 @@ export default function Home() {
       </Text>
       <Dropdown
         renderReferenceComponent={({ setReference, referenceProps }) => (
-          <button ref={setReference} type="button" {...referenceProps}>
-            Pick Theme
-          </button>
+          <Button
+            ref={setReference}
+            {...referenceProps}
+            type="button"
+            size="sm"
+            variant="primary"
+            label="Theme"
+          />
         )}
         onItemAction={(key) => {
           document.documentElement.setAttribute("data-theme", key);

@@ -30,8 +30,8 @@ export type AvatarProps = {
   size: SizeVariants;
   src: string;
 };
+const Component = styled("img", avatarRecipe);
 
 export const Avatar = ({ size, src }: AvatarProps) => {
-  const Component = styled("img", avatarRecipe);
   return <Component size={size} src={src} alt="Avatar" />;
 };
