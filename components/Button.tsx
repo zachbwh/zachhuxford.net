@@ -4,6 +4,12 @@ import { Text } from "./Text";
 
 const buttonRecipe = sva({
   slots: ["button", "label"],
+  base: {
+    button: {
+      transition: "background",
+      transitionDuration: "300ms",
+    },
+  },
   variants: {
     size: {
       sm: {
@@ -25,8 +31,13 @@ const buttonRecipe = sva({
     variant: {
       primary: {
         button: {
-          backgroundColor: "blue.700",
-          borderColor: "blue.700",
+          backgroundColor: "background.primary",
+          _hover: {
+            backgroundColor: "background.primary-hover",
+          },
+          _active: {
+            backgroundColor: "background.primary-active",
+          },
         },
       },
       secondary: {
@@ -47,6 +58,8 @@ export type ButtonProps = {
   variant: Variants;
   label: string;
   hideLabel?: boolean;
+  icon?: React.ReactNode;
+  iconPosition?: "start" | "end";
   ref?: React.Ref<HTMLButtonElement>;
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -60,6 +73,9 @@ export const Button = ({
   variant,
   label,
   hideLabel,
+  icon,
+  iconPosition = "start",
+  type = "button",
   ref,
   onClick,
   onKeyDown,
@@ -73,13 +89,16 @@ export const Button = ({
       className={classnames.button}
       aria-label={hideLabel ? label : undefined}
       ref={ref}
+      type={type}
       onClick={onClick}
       onKeyDown={onKeyDown}
       onFocus={onFocus}
       onBlur={onBlur}
       {...rest}
     >
+      {icon && iconPosition === "start" && icon}
       {!hideLabel && <Text textStyle="body">{label}</Text>}
+      {icon && iconPosition === "end" && icon}
     </button>
   );
 };

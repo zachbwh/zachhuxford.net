@@ -1,5 +1,6 @@
 import {
   defineConfig,
+  defineGlobalStyles,
   defineTextStyles,
   type SemanticTokens,
 } from "@pandacss/dev";
@@ -60,6 +61,13 @@ const mergedSemanticTokens = mergeSemanticTokens([
   { name: "darkTheme", tokens: tokensPandaDark["semantic-tokens"] },
   { name: "purpleTheme", tokens: tokensPandaPurple["semantic-tokens"] },
 ]);
+
+const globalCss = defineGlobalStyles({
+  // Maybe figure out a better way of handling icons
+  ".lucide": {
+    display: "inline-block",
+  },
+});
 
 type PandaTextStyle = {
   value: {
@@ -125,6 +133,8 @@ export default defineConfig({
   },
   strictTokens: true,
   strictPropertyValues: true,
+
+  globalCss,
 
   jsxFramework: "react",
 

@@ -5,6 +5,7 @@ import { Avatar } from "@components/Avatar";
 import { Box } from "@styled-system/jsx";
 import { Dropdown } from "@components/Dropdown";
 import { Button } from "@components/Button";
+import { Palette } from "lucide-react";
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
             size="sm"
             variant="primary"
             label="Theme"
+            icon={<Palette />}
           />
         )}
         onItemAction={(key) => {

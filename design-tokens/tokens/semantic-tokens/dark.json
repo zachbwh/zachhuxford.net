@@ -15,6 +15,18 @@
         "main-accent": {
           "$type": "color",
           "$value": "{colors.slate.900}"
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "{colors.slate.100}"
+        },
+        "primary-hover": {
+          "$type": "color",
+          "$value": "{colors.slate.200}"
+        },
+        "primary-active": {
+          "$type": "color",
+          "$value": "{colors.slate.300}"
         }
       }
     },

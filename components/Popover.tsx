@@ -1,6 +1,7 @@
 import { cva } from "@styled-system/css";
 import {
   useFloating,
+  offset,
   useInteractions,
   useClick,
   autoUpdate,
@@ -17,7 +18,7 @@ const popoverRecipe = cva({
     backgroundColor: "blue.700",
     color: "white",
     transition: "opacity",
-    transitionDuration: "100ms",
+    transitionDuration: "200ms",
     padding: "2",
     borderRadius: "1",
     opacity: 0,
@@ -63,14 +64,15 @@ export const usePopover = () => {
     whileElementsMounted: autoUpdate,
     open: isOpen,
     onOpenChange: setIsOpen,
-    placement: "top",
+    placement: "top-start",
+    middleware: [offset(8)],
   });
 
   const click = useClick(context);
   const dismiss = useDismiss(context);
 
   const { isMounted, status: transitionStatus } = useTransitionStatus(context, {
-    duration: 100,
+    duration: 200,
   });
 
   return {

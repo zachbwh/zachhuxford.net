@@ -50,7 +50,7 @@ export type TextProps = {
 export const Text = ({
   children,
   textStyle,
-  color = "onMainAccent",
+  color,
   as = "span",
 }: TextProps) => {
   const Tag = styled(as, textRecipe);
