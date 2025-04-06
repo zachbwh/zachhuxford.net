@@ -17,13 +17,16 @@ const popoverRecipe = cva({
     border: "outline",
     backgroundColor: "blue.700",
     color: "white",
-    transition: "opacity",
+    transition: "all",
     transitionDuration: "200ms",
     padding: "2",
     borderRadius: "1",
     opacity: 0,
+    transformOrigin: "center",
+    transform: "translateY(2px) scale(0.97)",
     "&[data-status=open]": {
       opacity: 1,
+      transform: "translateY(0px) scale(1)",
     },
     "&[data-status=close]": {
       opacity: 0,
@@ -117,12 +120,12 @@ export const PopoverBase = ({
             ref={refs.setFloating}
             style={floatingStyles}
             {...getFloatingProps()}
-            className={popoverRecipe()}
-            data-status={transitionStatus}
           >
-            {typeof children === "function"
-              ? children({ getItemProps })
-              : children}
+            <div className={popoverRecipe()} data-status={transitionStatus}>
+              {typeof children === "function"
+                ? children({ getItemProps })
+                : children}
+            </div>
           </div>
         </FloatingFocusManager>
       )}
