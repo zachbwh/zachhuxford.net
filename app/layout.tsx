@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="purple">
       <body
         className={`${karla.variable} ${monsterrat.variable} ${inconsolata.variable} ${css({ backgroundColor: "background.main-accent" })}`}
       >

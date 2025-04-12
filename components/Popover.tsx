@@ -67,7 +67,7 @@ export const usePopover = () => {
     whileElementsMounted: autoUpdate,
     open: isOpen,
     onOpenChange: setIsOpen,
-    placement: "top-start",
+    placement: "top-end",
     middleware: [offset(8)],
   });
 

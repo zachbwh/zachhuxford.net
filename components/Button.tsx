@@ -6,8 +6,16 @@ const buttonRecipe = sva({
   slots: ["button", "label"],
   base: {
     button: {
-      transition: "background",
+      transition: "[background, transform]",
       transitionDuration: "300ms",
+      borderRadius: "2",
+      transform: "scale(1)",
+      _hover: {
+        transform: "scale(1.02)",
+      },
+      _active: {
+        transform: "scale(0.98)",
+      },
     },
   },
   variants: {
@@ -42,7 +50,26 @@ const buttonRecipe = sva({
       },
       secondary: {
         button: {
-          borderColor: "blue.700",
+          color: "foreground.on-main-accent",
+          backgroundColor: "background.secondary",
+          _hover: {
+            backgroundColor: "background.secondary-hover",
+          },
+          _active: {
+            backgroundColor: "background.secondary-active",
+          },
+        },
+      },
+    },
+    width: {
+      full: {
+        button: {
+          width: "[100%]",
+        },
+      },
+      min: {
+        button: {
+          width: "[min-content]",
         },
       },
     },
@@ -52,10 +79,12 @@ const buttonRecipe = sva({
 type ButtonVariants = RecipeVariantProps<typeof buttonRecipe>;
 type Sizes = NonNullable<NonNullable<ButtonVariants>["size"]>;
 type Variants = NonNullable<NonNullable<ButtonVariants>["variant"]>;
+type Widths = NonNullable<NonNullable<ButtonVariants>["width"]>;
 
 export type ButtonProps = {
   size: Sizes;
   variant: Variants;
+  width?: Widths;
   label: string;
   hideLabel?: boolean;
   icon?: React.ReactNode;
@@ -71,6 +100,7 @@ export type ButtonProps = {
 export const Button = ({
   size,
   variant,
+  width,
   label,
   hideLabel,
   icon,
@@ -83,7 +113,7 @@ export const Button = ({
   onBlur,
   ...rest
 }: ButtonProps) => {
-  const classnames = buttonRecipe({ size, variant });
+  const classnames = buttonRecipe({ size, variant, width });
   return (
     <button
       className={classnames.button}

@@ -18,10 +18,10 @@ export default function Home() {
         minHeight: "[100dvh]",
       })}
     >
-      <Text textStyle="body" as="p">
+      <Text textStyle="body" as="p" color="onMainAccent">
         It's me!
       </Text>
-      <Text textStyle="display">
+      <Text textStyle="display" as="h1" color="onMainAccent">
         Zach Huxford
         <Text textStyle="inherit" color="secondaryAccent">
           .
@@ -33,15 +33,15 @@ export default function Home() {
           />
         </Box>
       </Text>
-      <Text textStyle="body" as="p">
+      <Text textStyle="body" as="p" color="onMainAccent">
         I'm a Software Developer from New Zealand.
       </Text>
-      <Text textStyle="body" as="p">
+      <Text textStyle="body" as="p" color="onMainAccent">
         I like to spend my spare time browsing wikipedia, reading, listening to
         podcasts and music, and cooking. I'm particularly interested in full
         stack web development, graphic design and Linux.
       </Text>
-      <Text textStyle="body" as="p">
+      <Text textStyle="body" as="p" color="onMainAccent">
         I care about my work having a positive impact on other people, which is
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.
@@ -53,9 +53,11 @@ export default function Home() {
             {...referenceProps}
             type="button"
             size="sm"
-            variant="primary"
+            variant="secondary"
             label="Theme"
-            icon={<Palette />}
+            hideLabel
+            width="min"
+            icon={<Palette strokeWidth={1.5} />}
           />
         )}
         onItemAction={(key) => {

@@ -2,10 +2,34 @@
   "colors": {
     "$type": "color",
     "black": {
-      "$value": "#000000"
+      "0": { "$value": "oklch(0 0 0 / 0)" },
+      "50": { "$value": "oklch(0 0 0 / 0.05)" },
+      "100": { "$value": "oklch(0 0 0 / 0.1)" },
+      "200": { "$value": "oklch(0 0 0 / 0.2)" },
+      "300": { "$value": "oklch(0 0 0 / 0.3)" },
+      "400": { "$value": "oklch(0 0 0 / 0.4)" },
+      "500": { "$value": "oklch(0 0 0 / 0.5)" },
+      "600": { "$value": "oklch(0 0 0 / 0.6)" },
+      "700": { "$value": "oklch(0 0 0 / 0.7)" },
+      "800": { "$value": "oklch(0 0 0 / 0.8)" },
+      "900": { "$value": "oklch(0 0 0 / 0.9)" },
+      "950": { "$value": "oklch(0 0 0 / 0.95)" },
+      "1000": { "$value": "oklch(0 0 0)" }
     },
     "white": {
-      "$value": "#ffffff"
+      "0": { "$value": "oklch(1 0 0 / 0)" },
+      "50": { "$value": "oklch(1 0 0 / 0.05)" },
+      "100": { "$value": "oklch(1 0 0 / 0.1)" },
+      "200": { "$value": "oklch(1 0 0 / 0.2)" },
+      "300": { "$value": "oklch(1 0 0 / 0.3)" },
+      "400": { "$value": "oklch(1 0 0 / 0.4)" },
+      "500": { "$value": "oklch(1 0 0 / 0.5)" },
+      "600": { "$value": "oklch(1 0 0 / 0.6)" },
+      "700": { "$value": "oklch(1 0 0 / 0.7)" },
+      "800": { "$value": "oklch(1 0 0 / 0.8)" },
+      "900": { "$value": "oklch(1 0 0 / 0.9)" },
+      "950": { "$value": "oklch(1 0 0 / 0.95)" },
+      "1000": { "$value": "oklch(1 0 0)" }
     },
     "red": {
       "50": { "$value": "oklch(.971 .013 17.38)" },

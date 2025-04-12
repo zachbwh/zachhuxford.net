@@ -44,7 +44,7 @@
     "$type": "border",
     "heavy": {
       "$value": {
-        "color": "{colors.black}",
+        "color": "{colors.black.1000}",
         "width": "1px",
         "style": "{borders.styles.solid}"
       }
@@ -67,7 +67,7 @@
     "$type": "shadow",
     "sm": {
       "$value": {
-        "color": "{colors.black}",
+        "color": "{colors.black.1000}",
         "offsetX": "{dimensions.0}",
         "offsetY": "{dimensions.1}",
         "blur": "{dimensions.3}"
@@ -75,7 +75,7 @@
     },
     "lg": {
       "$value": {
-        "color": "{colors.black}",
+        "color": "{colors.black.1000}",
         "offsetX": "{dimensions.0}",
         "offsetY": "{dimensions.2}",
         "blur": "{dimensions.4}"

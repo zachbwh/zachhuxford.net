@@ -4,7 +4,7 @@
       "foreground": {
         "on-main-accent": {
           "$type": "color",
-          "$value": "{colors.white}"
+          "$value": "{colors.white.1000}"
         },
         "secondary-accent": {
           "$type": "color",
@@ -27,6 +27,18 @@
         "primary-active": {
           "$type": "color",
           "$value": "{colors.slate.300}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{colors.white.0}"
+        },
+        "secondary-hover": {
+          "$type": "color",
+          "$value": "{colors.white.100}"
+        },
+        "secondary-active": {
+          "$type": "color",
+          "$value": "{colors.white.200}"
         }
       }
     },
