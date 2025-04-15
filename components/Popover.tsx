@@ -1,5 +1,5 @@
 "use client";
-import { cva } from "@styled-system/css";
+import { css, cva } from "@styled-system/css";
 import {
   useFloating,
   offset,
@@ -22,7 +22,6 @@ const popoverRecipe = cva({
     padding: "2",
     borderRadius: "1",
     opacity: 0,
-    outlineWidth: "0",
     transformOrigin: "center",
     transform: "translateY(2px) scale(0.97)",
     "&[data-status=open]": {
@@ -120,6 +119,7 @@ export const PopoverBase = ({
           <div
             ref={refs.setFloating}
             style={floatingStyles}
+            className={css({ outlineWidth: 0 })}
             {...getFloatingProps()}
           >
             <div className={popoverRecipe()} data-status={transitionStatus}>
