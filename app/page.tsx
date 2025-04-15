@@ -6,6 +6,7 @@ import { Box } from "@styled-system/jsx";
 import { Dropdown } from "@components/Dropdown";
 import { Button } from "@components/Button";
 import { Palette } from "lucide-react";
+import { css } from "@styled-system/css";
 
 export default function Home() {
   return (
@@ -46,29 +47,37 @@ export default function Home() {
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.
       </Text>
-      <Dropdown
-        renderReferenceComponent={({ setReference, referenceProps }) => (
-          <Button
-            ref={setReference}
-            {...referenceProps}
-            type="button"
-            size="sm"
-            variant="secondary"
-            label="Theme"
-            hideLabel
-            width="min"
-            icon={<Palette strokeWidth={1.5} />}
-          />
-        )}
-        onItemAction={(key) => {
-          document.documentElement.setAttribute("data-theme", key);
-        }}
+      <div
+        className={css({
+          position: "absolute",
+          insetBlockEnd: "4",
+          insetInlineEnd: "4",
+        })}
       >
-        {[
-          { label: "Purple", value: "purple", id: "purple" },
-          { label: "Dark", value: "dark", id: "dark" },
-        ]}
-      </Dropdown>
+        <Dropdown
+          renderReferenceComponent={({ setReference, referenceProps }) => (
+            <Button
+              ref={setReference}
+              {...referenceProps}
+              type="button"
+              size="sm"
+              variant="secondary"
+              label="Theme"
+              hideLabel
+              width="min"
+              icon={<Palette strokeWidth={1.5} />}
+            />
+          )}
+          onItemAction={(key) => {
+            document.documentElement.setAttribute("data-theme", key);
+          }}
+        >
+          {[
+            { label: "Purple", value: "purple", id: "purple" },
+            { label: "Dark", value: "dark", id: "dark" },
+          ]}
+        </Dropdown>
+      </div>
     </div>
   );
 }
