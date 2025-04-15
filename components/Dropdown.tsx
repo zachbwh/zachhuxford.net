@@ -1,6 +1,24 @@
+"use client";
 import { useListNavigation } from "@floating-ui/react";
 import { type PopoverProps, PopoverBase, usePopover } from "./Popover";
+import { focusRing } from "./FocusRing";
 import { useMemo, useRef, useState } from "react";
+import { css, cva } from "../styled-system/css";
+
+export const dropdownItem = cva({
+  base: {
+    padding: "2",
+    borderRadius: "2",
+    color: "foreground.on-main-accent",
+    backgroundColor: "background.secondary",
+    _hover: {
+      backgroundColor: "background.secondary-hover",
+    },
+    _active: {
+      backgroundColor: "background.secondary-active",
+    },
+  },
+});
 
 type DropdownItemProps = {
   label: string;
@@ -56,6 +74,7 @@ export const Dropdown = ({
             key={id}
             // Make these elements focusable using a roving tabIndex.
             tabIndex={activeIndex === index ? 0 : -1}
+            className={css(dropdownItem.raw(), focusRing.raw())}
             ref={(node) => {
               listRef.current[index] = node;
             }}

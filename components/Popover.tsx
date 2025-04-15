@@ -1,3 +1,4 @@
+"use client";
 import { cva } from "@styled-system/css";
 import {
   useFloating,
@@ -15,8 +16,7 @@ import { useState } from "react";
 const popoverRecipe = cva({
   base: {
     border: "outline",
-    backgroundColor: "blue.700",
-    color: "white",
+    backgroundColor: "background.main-accent",
     transition: "all",
     transitionDuration: "200ms",
     padding: "2",

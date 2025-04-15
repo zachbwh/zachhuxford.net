@@ -1,6 +1,7 @@
 import type React from "react";
-import { sva, type RecipeVariantProps } from "@styled-system/css";
+import { css, sva, type RecipeVariantProps } from "@styled-system/css";
 import { Text } from "./Text";
+import { focusRing } from "./FocusRing";
 
 const buttonRecipe = sva({
   slots: ["button", "label"],
@@ -113,10 +114,10 @@ export const Button = ({
   onBlur,
   ...rest
 }: ButtonProps) => {
-  const classnames = buttonRecipe({ size, variant, width });
+  const classnames = buttonRecipe.raw({ size, variant, width });
   return (
     <button
-      className={classnames.button}
+      className={css(classnames.button, focusRing.raw())}
       aria-label={hideLabel ? label : undefined}
       ref={ref}
       type={type}
