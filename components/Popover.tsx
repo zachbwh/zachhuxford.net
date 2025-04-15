@@ -22,6 +22,7 @@ const popoverRecipe = cva({
     padding: "2",
     borderRadius: "1",
     opacity: 0,
+    outlineWidth: "0",
     transformOrigin: "center",
     transform: "translateY(2px) scale(0.97)",
     "&[data-status=open]": {
