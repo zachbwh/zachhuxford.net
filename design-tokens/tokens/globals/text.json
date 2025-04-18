@@ -107,6 +107,14 @@
           "fontSize": "{text.sizes.body}",
           "lineHeight": "{text.lineHeights.large}"
         }
+      },
+      "inherit": {
+        "$value": {
+          "fontFamily": "inherit",
+          "fontWeight": "inherit",
+          "fontSize": "inherit",
+          "lineHeight": "inherit"
+        }
       }
     }
   }

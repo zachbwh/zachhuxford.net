@@ -10,6 +10,8 @@ import tokensBase from "@design-tokens/js/purple/tokens";
 import tokensPandaDark from "@design-tokens/js/dark/tokens-panda";
 import tokensPandaPurple from "@design-tokens/js/purple/tokens-panda";
 
+import { textRecipe } from "@components/Text/recipe";
+
 type RecursiveSemanticToken = SemanticTokens[keyof SemanticTokens];
 const mergeSemanticTokens = (
   themedSemanticTokens: { name: string; tokens: SemanticTokens }[]
@@ -130,6 +132,11 @@ export default defineConfig({
       radii: { ...tokensPandaDark.dimensions },
     },
     semanticTokens: mergedSemanticTokens,
+    extend: {
+      recipes: {
+        text: textRecipe,
+      },
+    },
   },
   strictTokens: true,
   strictPropertyValues: true,
