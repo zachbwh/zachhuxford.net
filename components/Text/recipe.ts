@@ -4,8 +4,14 @@ export const textRecipe = defineRecipe({
   className: "text",
   variants: {
     textStyle: {
-      display: {
+      displayLg: {
         textStyle: "display-lg",
+      },
+      displayMd: {
+        textStyle: "display-md",
+      },
+      displaySm: {
+        textStyle: "display-sm",
       },
       body: {
         textStyle: "body",

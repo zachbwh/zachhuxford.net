@@ -8,32 +8,53 @@ import { Button } from "@components/Button";
 import { Palette } from "lucide-react";
 import { css } from "@styled-system/css";
 
-export default function Home() {
+const GRAVATAR_URL =
+  "https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300";
+
+const Name = () => (
+  <Text textStyle="inherit" color="onMainAccent">
+    Zach Huxford
+    <Text textStyle="inherit" color="secondaryAccent">
+      .
+    </Text>
+  </Text>
+);
+
+const Home = () => {
   return (
     <section
       className={stack({
         direction: "column",
         gap: "4",
-        paddingInline: "10",
+        paddingInline: "5",
         paddingBlock: "20",
+        paddingBlockStart: "7",
+        sm: {
+          paddingInline: "10",
+          paddingBlockStart: "20",
+        },
         justifyContent: "center",
       })}
     >
       <Text textStyle="body" as="p" color="onMainAccent">
         It's me!
       </Text>
-      <Text textStyle="display" as="h1" color="onMainAccent">
-        Zach Huxford
-        <Text textStyle="inherit" color="secondaryAccent">
-          .
+      <span className={css({ hideBelow: "sm" })}>
+        <Text textStyle="displayLg" as="h1" color="onMainAccent">
+          <Name />
+          <Box display="inline-block" verticalAlign="sub" paddingLeft="10">
+            <Avatar size="lg" src={GRAVATAR_URL} />
+          </Box>
         </Text>
-        <Box display="inline-block" verticalAlign="sub" paddingLeft="10">
-          <Avatar
-            size="lg"
-            src="https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300"
-          />
-        </Box>
-      </Text>
+      </span>
+      <span className={css({ hideFrom: "sm" })}>
+        <Text textStyle="displaySm" as="h1" color="onMainAccent">
+          <Name />
+          <Box display="inline-block" verticalAlign="sub" paddingLeft="5">
+            <Avatar size="md" src={GRAVATAR_URL} />
+          </Box>
+        </Text>
+      </span>
       <Text textStyle="body" as="p" color="onMainAccent">
         I'm a Software Developer from New Zealand.
       </Text>
@@ -80,4 +101,6 @@ export default function Home() {
       </div>
     </section>
   );
-}
+};
+
+export default Home;
