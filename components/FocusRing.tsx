@@ -11,7 +11,7 @@ export const focusRing = cva({
       left: "0",
       right: "0",
       bottom: "0",
-      borderRadius: "inherit",
+      borderRadius: "[inherit]",
       transition: "[outline 100ms ease-in-out]",
       outlineWidth: "2",
       outlineOffset: "0",
@@ -21,7 +21,6 @@ export const focusRing = cva({
     _focusVisible: {
       _before: {
         outlineColor: "foreground.on-main-accent",
-        // outlineOffset: "1",
       },
     },
   },
