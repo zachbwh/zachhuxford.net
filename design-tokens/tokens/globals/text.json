@@ -15,8 +15,14 @@
     },
     "sizes": {
       "$type": "fontSize",
-      "display": {
+      "display-lg": {
         "$value": "{dimensions.20}"
+      },
+      "display-md": {
+        "$value": "{dimensions.17}"
+      },
+      "display-sm": {
+        "$value": "{dimensions.14}"
       },
       "heading": {
         "$value": "{dimensions.7}"
@@ -54,11 +60,27 @@
     },
     "typography": {
       "$type": "typography",
-      "display": {
+      "display-lg": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
           "fontWeight": "{text.weights.regular}",
-          "fontSize": "{text.sizes.display}",
+          "fontSize": "{text.sizes.display-lg}",
+          "lineHeight": "{text.lineHeights.normal}"
+        }
+      },
+      "display-md": {
+        "$value": {
+          "fontFamily": "{text.fonts.karla}",
+          "fontWeight": "{text.weights.regular}",
+          "fontSize": "{text.sizes.display-md}",
+          "lineHeight": "{text.lineHeights.normal}"
+        }
+      },
+      "display-sm": {
+        "$value": {
+          "fontFamily": "{text.fonts.karla}",
+          "fontWeight": "{text.weights.regular}",
+          "fontSize": "{text.sizes.display-sm}",
           "lineHeight": "{text.lineHeights.normal}"
         }
       },

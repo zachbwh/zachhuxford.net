@@ -5,7 +5,7 @@ const textRecipe = cva({
   variants: {
     textStyle: {
       display: {
-        textStyle: "display",
+        textStyle: "display-lg",
       },
       body: {
         textStyle: "body",
