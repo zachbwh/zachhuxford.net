@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Karla, Inconsolata, Montserrat } from "next/font/google";
 import "./globals.css";
 import { css } from "@styled-system/css";
+import { Navigation } from "@components/Navigation";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -31,8 +32,21 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="purple">
       <body
-        className={`${karla.variable} ${monsterrat.variable} ${inconsolata.variable} ${css({ backgroundColor: "background.main-accent" })}`}
+        className={`${karla.variable} ${monsterrat.variable} ${inconsolata.variable} ${css(
+          {
+            backgroundColor: "background.main-accent",
+            minHeight: "[100dvh]",
+            position: "relative",
+          }
+        )}`}
       >
+        <Navigation
+          items={[
+            { label: "Home", id: "home", href: "/" },
+            { label: "My Story", id: "my-story", href: "/my-story" },
+            { label: "Blog", id: "Blog", href: "/blog" },
+          ]}
+        />
         {children}
       </body>
     </html>
