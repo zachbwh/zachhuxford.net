@@ -11,7 +11,7 @@ const navigation = css({
 });
 
 const navigationItem = css({
-  display: "inline",
+  display: "inline-block",
   padding: "2",
 });
 

@@ -10,13 +10,13 @@ import { css } from "@styled-system/css";
 
 export default function Home() {
   return (
-    <div
+    <section
       className={stack({
         direction: "column",
         gap: "4",
         paddingInline: "10",
+        paddingBlock: "20",
         justifyContent: "center",
-        minHeight: "[100dvh]",
       })}
     >
       <Text textStyle="body" as="p" color="onMainAccent">
@@ -78,6 +78,6 @@ export default function Home() {
           ]}
         </Dropdown>
       </div>
-    </div>
+    </section>
   );
 }

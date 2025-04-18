@@ -47,7 +47,11 @@ export default function RootLayout({
             { label: "Blog", id: "Blog", href: "/blog" },
           ]}
         />
-        {children}
+        <div
+          className={css({ maxWidth: "breakpoint-lg", marginInline: "auto" })}
+        >
+          {children}
+        </div>
       </body>
     </html>
   );
