@@ -30,6 +30,7 @@ const mergeSemanticTokens = (
           mergedTokens.value = {};
         }
         if (typeof mergedTokens.value === "object") {
+          // @ts-ignore
           mergedTokens.value[`_${name}`] = obj[key];
         }
       }
@@ -42,6 +43,7 @@ const mergeSemanticTokens = (
         if (!mergedTokens[key]) {
           mergedTokens[key] = {} as NonNullable<RecursiveSemanticToken>;
         }
+        // @ts-ignore
         _mergeRecursiveSemanticTokens(name, obj[key], mergedTokens[key]);
       }
     });
@@ -53,6 +55,7 @@ const mergeSemanticTokens = (
       const mergedRecursiveToken: RecursiveSemanticToken =
         acc[key as keyof SemanticTokens] || {};
       _mergeRecursiveSemanticTokens(name, recursiveToken, mergedRecursiveToken);
+      // @ts-ignore
       acc[key as keyof SemanticTokens] = mergedRecursiveToken;
       return acc;
     }, acc);
@@ -93,6 +96,7 @@ const textStyleDefinitions = typographyTokens.reduce(
       },
     };
 
+    // @ts-ignore
     acc[name] = pandaTextStyle;
 
     return acc;
@@ -106,7 +110,11 @@ export default defineConfig({
   preflight: true,
 
   // Where to look for your css declarations
-  include: ["./components/**/*.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
+  include: [
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./mdx-components.tsx",
+  ],
 
   // Files to exclude
   exclude: [],
