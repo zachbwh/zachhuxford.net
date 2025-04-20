@@ -26,13 +26,6 @@ const Home = () => {
       className={stack({
         direction: "column",
         gap: "4",
-        paddingInline: "5",
-        paddingBlock: "20",
-        paddingBlockStart: "7",
-        sm: {
-          paddingInline: "10",
-          paddingBlockStart: "20",
-        },
         justifyContent: "center",
       })}
     >

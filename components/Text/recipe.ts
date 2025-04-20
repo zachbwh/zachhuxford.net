@@ -4,6 +4,12 @@ export const textRecipe = defineRecipe({
   className: "text",
   variants: {
     textStyle: {
+      display2xl: {
+        textStyle: "display-2xl",
+      },
+      displayXl: {
+        textStyle: "display-xl",
+      },
       displayLg: {
         textStyle: "display-lg",
       },
@@ -12,6 +18,9 @@ export const textRecipe = defineRecipe({
       },
       displaySm: {
         textStyle: "display-sm",
+      },
+      displayXs: {
+        textStyle: "display-xs",
       },
       body: {
         textStyle: "body",
@@ -28,5 +37,8 @@ export const textRecipe = defineRecipe({
         color: "foreground.secondary-accent",
       },
     },
+  },
+  defaultVariants: {
+    color: "onMainAccent",
   },
 });

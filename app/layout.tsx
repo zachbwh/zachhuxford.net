@@ -48,7 +48,17 @@ export default function RootLayout({
           ]}
         />
         <div
-          className={css({ maxWidth: "breakpoint-lg", marginInline: "auto" })}
+          className={css({
+            maxWidth: "breakpoint-lg",
+            marginInline: "auto",
+            paddingInline: "5",
+            paddingBlock: "20",
+            paddingBlockStart: "7",
+            sm: {
+              paddingInline: "10",
+              paddingBlockStart: "20",
+            },
+          })}
         >
           {children}
         </div>

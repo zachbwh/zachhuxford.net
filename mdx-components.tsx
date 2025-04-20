@@ -8,7 +8,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className={text({
           textStyle: {
             base: "displayMd",
-            sm: "displayLg",
+            sm: "display2xl",
           },
         })}
       >
@@ -17,16 +17,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => (
       <h2
-        className={text({ textStyle: { base: "displaySm", sm: "displayMd" } })}
+        className={text({ textStyle: { base: "displaySm", sm: "displayXl" } })}
       >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className={text({ textStyle: "displaySm" })}>{children}</h3>
+      <h3
+        className={text({ textStyle: { base: "displayXs", sm: "displayLg" } })}
+      >
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
-      <h4 className={text({ textStyle: "displaySm" })}>{children}</h4>
+      <h4
+        className={text({ textStyle: { base: "displayXs", sm: "displayMd" } })}
+      >
+        {children}
+      </h4>
     ),
     ol: ({ children }) => (
       <ol className={text({ textStyle: "body" })}>{children}</ol>

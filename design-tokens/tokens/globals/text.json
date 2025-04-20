@@ -15,13 +15,22 @@
     },
     "sizes": {
       "$type": "fontSize",
-      "display-lg": {
+      "display-2xl": {
         "$value": "{dimensions.20}"
       },
-      "display-md": {
+      "display-xl": {
         "$value": "{dimensions.17}"
       },
+      "display-lg": {
+        "$value": "{dimensions.14}"
+      },
+      "display-md": {
+        "$value": "{dimensions.12}"
+      },
       "display-sm": {
+        "$value": "{dimensions.10}"
+      },
+      "display-xs": {
         "$value": "{dimensions.14}"
       },
       "heading": {
@@ -60,6 +69,22 @@
     },
     "typography": {
       "$type": "typography",
+      "display-2xl": {
+        "$value": {
+          "fontFamily": "{text.fonts.karla}",
+          "fontWeight": "{text.weights.regular}",
+          "fontSize": "{text.sizes.display-2xl}",
+          "lineHeight": "{text.lineHeights.normal}"
+        }
+      },
+      "display-xl": {
+        "$value": {
+          "fontFamily": "{text.fonts.karla}",
+          "fontWeight": "{text.weights.regular}",
+          "fontSize": "{text.sizes.display-xl}",
+          "lineHeight": "{text.lineHeights.normal}"
+        }
+      },
       "display-lg": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
@@ -81,6 +106,14 @@
           "fontFamily": "{text.fonts.karla}",
           "fontWeight": "{text.weights.regular}",
           "fontSize": "{text.sizes.display-sm}",
+          "lineHeight": "{text.lineHeights.normal}"
+        }
+      },
+      "display-xs": {
+        "$value": {
+          "fontFamily": "{text.fonts.karla}",
+          "fontWeight": "{text.weights.regular}",
+          "fontSize": "{text.sizes.display-xs}",
           "lineHeight": "{text.lineHeights.normal}"
         }
       },
