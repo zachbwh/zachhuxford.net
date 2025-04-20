@@ -138,6 +138,7 @@ export default defineConfig({
       },
       borders: { ...tokensPandaDark.borders },
       radii: { ...tokensPandaDark.dimensions },
+      shadows: { ...tokensPandaDark.shadows },
     },
     semanticTokens: mergedSemanticTokens,
     extend: {

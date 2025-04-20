@@ -95,6 +95,7 @@ function getStyleDictionaryConfig(theme) {
     platforms: {
       web: {
         transformGroup: js,
+        transforms: ["shadow/css/shorthand"],
         buildPath: `build/js/${theme}/`,
         files: [
           {
