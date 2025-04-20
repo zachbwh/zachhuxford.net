@@ -8,14 +8,11 @@ const buttonRecipe = sva({
   base: {
     button: {
       transition: "[background, transform]",
-      transitionDuration: "300ms",
+      transitionDuration: "100ms",
       borderRadius: "2",
       transform: "scale(1)",
-      _hover: {
-        transform: "scale(1.02)",
-      },
       _active: {
-        transform: "scale(0.98)",
+        transform: "scale(0.96)",
       },
     },
   },
