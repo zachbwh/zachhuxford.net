@@ -1,6 +1,6 @@
-export const title = "Blog - New Website!";
+export const title = "New Website!";
 export const metadata = {
-  metadataBase: new URL("https://doineedtotapoff.in"),
+  metadataBase: new URL("https://zachhuxford.io"),
   title,
   keywords: [
     "Zach Huxford",
@@ -8,11 +8,26 @@ export const metadata = {
   authors: [{ name: "Zach Huxford" }],
   creator: "Zach Huxford",
   publisher: "Zach Huxford",
+  publishedTime: "2025-04-20",
   openGraph: {
-    title,
-    siteName: "Zach Huxford's Personal Website",
+    title: `Blog - ${title}`,
+    siteName: "Zach Huxford's Personal Blog",
+    publishedTime: "2025-04-20"
   },
 };
 
-# New Website!
+# {title}
 
+It's been a while since I've changes anything here, mostly because it was fulfilling it's purpose well enough, but for a while a few things had been bothering me.
+
+1. No blog
+2. Outdated stack
+3. "Sub-optimal" performance
+4. Poor accessbility and html semantics
+5. Hard to keep content up to date, or add new content to
+
+Additionally, as is typical for me, this project has been a vehicle for me to learn some new tooling, and overengineer something.
+The new tooling I'm using in this project is:
+
+1. [Panda CSS](https://panda-css.com/)
+2. [Style Dictionary](https://styledictionary.com/)

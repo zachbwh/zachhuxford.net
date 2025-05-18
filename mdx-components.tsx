@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { text } from "@styled-system/recipes";
+import { css } from "@styled-system/css";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -37,10 +38,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h4>
     ),
     ol: ({ children }) => (
-      <ol className={text({ textStyle: "body" })}>{children}</ol>
+      <ol
+        className={css({
+          listStyle: "body",
+          listStyleType: "number",
+          listStylePosition: "inside",
+          color: "foreground.on-main-accent",
+        })}
+      >
+        {children}
+      </ol>
     ),
     ul: ({ children }) => (
-      <ul className={text({ textStyle: "body" })}>{children}</ul>
+      <ul
+        className={css({
+          listStyle: "body",
+          listStyleType: "circle",
+          listStylePosition: "inside",
+          color: "foreground.on-main-accent",
+        })}
+      >
+        {children}
+      </ul>
     ),
     p: ({ children }) => (
       <p className={text({ textStyle: "body" })}>{children}</p>
