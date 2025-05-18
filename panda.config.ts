@@ -72,6 +72,9 @@ const globalCss = defineGlobalStyles({
   ".lucide": {
     display: "inline-block",
   },
+  "*": {
+    fontFamily: tokensDark.text.typography.body.$value.fontFamily,
+  },
 });
 
 type PandaTextStyle = {
