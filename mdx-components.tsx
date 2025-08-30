@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
-import { text } from "@styled-system/recipes";
+import { text, link } from "@styled-system/recipes";
 import { css } from "@styled-system/css";
+import Link from "next/link";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -68,6 +69,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <blockquote className={text({ textStyle: "body" })}>
         {children}
       </blockquote>
+    ),
+    a: ({ children, href }) => (
+      <Link className={link()} href={href}>
+        {children}
+      </Link>
     ),
     ...components,
   };

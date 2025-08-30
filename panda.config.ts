@@ -11,6 +11,7 @@ import tokensPandaDark from "@design-tokens/js/dark/tokens-panda";
 import tokensPandaPurple from "@design-tokens/js/purple/tokens-panda";
 
 import { textRecipe } from "@components/Text/recipe";
+import { linkRecipe } from "@components/Link/recipe";
 
 type RecursiveSemanticToken = SemanticTokens[keyof SemanticTokens];
 const mergeSemanticTokens = (
@@ -147,6 +148,7 @@ export default defineConfig({
     extend: {
       recipes: {
         text: textRecipe,
+        link: linkRecipe,
       },
     },
   },
