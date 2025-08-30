@@ -1,6 +1,6 @@
 import type React from "react";
 import { css, sva, type RecipeVariantProps } from "@styled-system/css";
-import { Text } from "./Text";
+import { text } from "@styled-system/recipes";
 import { focusRing } from "./FocusRing";
 
 const buttonRecipe = sva({
@@ -125,7 +125,9 @@ export const Button = ({
       {...rest}
     >
       {icon && iconPosition === "start" && icon}
-      {!hideLabel && <Text textStyle="body">{label}</Text>}
+      {!hideLabel && (
+        <span className={text({ textStyle: "body" })}>{label}</span>
+      )}
       {icon && iconPosition === "end" && icon}
     </button>
   );

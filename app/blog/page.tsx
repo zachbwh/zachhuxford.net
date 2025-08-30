@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
-import { Text } from "@components/Text";
+import { text } from "@styled-system/recipes/text";
 
 const BLOG_DIR = path.join(process.cwd(), "app/blog");
 
@@ -31,18 +31,18 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <Text as="h1" textStyle="displayLg" color="onMainAccent">
+      <h1 className={text({ textStyle: "displayLg", color: "onMainAccent" })}>
         Blog Posts
-        <Text textStyle="inherit" color="secondaryAccent">
-          .
-        </Text>
-      </Text>
+        <span className={text({ color: "secondaryAccent" })}>.</span>
+      </h1>
       <ul>
         {posts.map((post) => (
           <li key={post.slug}>
-            <Text textStyle="body" color="onMainAccent">
+            <span
+              className={text({ textStyle: "body", color: "onMainAccent" })}
+            >
               <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-            </Text>
+            </span>
           </li>
         ))}
       </ul>
