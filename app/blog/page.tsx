@@ -1,22 +1,36 @@
 import fs from "node:fs";
 import path from "node:path";
-import Link from "next/link";
-import { link, text } from "@styled-system/recipes";
+import { text } from "@styled-system/recipes";
+import { BlogPostCard } from "./_components/BlogPostCard";
+import { css, cx } from "@styled-system/css";
 
 const BLOG_DIR = path.join(process.cwd(), "app/blog");
 
+type BlogPost = {
+  slug: string;
+  metadata: {
+    title: string;
+    description?: string;
+    authors: { name: string }[];
+    publishedTime: string;
+  };
+  thumbnailSrc: string;
+};
+
 const getBlogPosts = async () => {
   const files = fs.readdirSync(BLOG_DIR, { recursive: true });
-  const posts = [];
+  const posts: BlogPost[] = [];
 
   for (const file of files) {
     const filePath = file.toString();
     if (filePath.endsWith(".mdx")) {
-      const { metadata } = await import(`./${filePath}`);
+      const { metadata, thumbnailSrc } = await import(`./${filePath}`);
+      const slug = filePath.replace(/\/page\.mdx$/, "");
 
       posts.push({
-        slug: filePath.replace(/\/page\.mdx$/, ""),
-        ...metadata,
+        slug,
+        thumbnailSrc,
+        metadata,
       });
     }
   }
@@ -31,24 +45,41 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <h1 className={text({ textStyle: "displayLg", color: "onMainAccent" })}>
-        Blog Posts
-        <span className={text({ color: "secondaryAccent" })}>.</span>
-      </h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.slug}>
-            <Link
-              className={link({
-                textStyle: "body",
-                color: "onMainAccent",
-              })}
-              href={`/blog/${post.slug}`}
+      <ul
+        className={css({
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          columnGap: "6",
+          rowGap: "10",
+          justifyContent: "center",
+        })}
+      >
+        <h1
+          className={cx(
+            text({ textStyle: "displayLg", color: "onMainAccent" }),
+            css({ gridColumn: "1 / -1" })
+          )}
+        >
+          Blog Posts
+          <span className={text({ color: "secondaryAccent" })}>.</span>
+        </h1>
+        {posts.map((post) =>
+          Array.from({ length: 10 }).map((_, index) => (
+            <li
+              key={post.slug + String(index)}
+              className={css({ gridColumn: "auto" })}
             >
-              {post.title}
-            </Link>
-          </li>
-        ))}
+              <BlogPostCard
+                href={`/blog/${post.slug}`}
+                thumbnailSrc={post.thumbnailSrc}
+                title={post.metadata.title}
+                subtitle={post.metadata.description ?? ""}
+                date={post.metadata.publishedTime}
+                author={post.metadata.authors[0]?.name}
+              />
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
