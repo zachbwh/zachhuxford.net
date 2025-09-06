@@ -22,6 +22,15 @@ export const textRecipe = defineRecipe({
       displayXs: {
         textStyle: "display-xs",
       },
+      headingLg: {
+        textStyle: "heading-lg",
+      },
+      headingMd: {
+        textStyle: "heading-md",
+      },
+      headingSm: {
+        textStyle: "heading-sm",
+      },
       body: {
         textStyle: "body",
       },

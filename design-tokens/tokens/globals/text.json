@@ -31,10 +31,16 @@
         "$value": "{dimensions.10}"
       },
       "display-xs": {
-        "$value": "{dimensions.14}"
+        "$value": "{dimensions.8}"
       },
-      "heading": {
+      "heading-lg": {
         "$value": "{dimensions.7}"
+      },
+      "heading-md": {
+        "$value": "{dimensions.6}"
+      },
+      "heading-sm": {
+        "$value": "{dimensions.5}"
       },
       "body": {
         "$value": "{dimensions.4}"
@@ -72,7 +78,7 @@
       "display-2xl": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-2xl}",
           "lineHeight": "{text.lineHeights.normal}"
         }
@@ -80,7 +86,7 @@
       "display-xl": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-xl}",
           "lineHeight": "{text.lineHeights.normal}"
         }
@@ -88,7 +94,7 @@
       "display-lg": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-lg}",
           "lineHeight": "{text.lineHeights.normal}"
         }
@@ -96,7 +102,7 @@
       "display-md": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-md}",
           "lineHeight": "{text.lineHeights.normal}"
         }
@@ -104,7 +110,7 @@
       "display-sm": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-sm}",
           "lineHeight": "{text.lineHeights.normal}"
         }
@@ -112,16 +118,32 @@
       "display-xs": {
         "$value": {
           "fontFamily": "{text.fonts.karla}",
-          "fontWeight": "{text.weights.regular}",
+          "fontWeight": "{text.weights.semibold}",
           "fontSize": "{text.sizes.display-xs}",
           "lineHeight": "{text.lineHeights.normal}"
         }
       },
-      "heading": {
+      "heading-lg": {
         "$value": {
           "fontFamily": "{text.fonts.montserrat}",
-          "fontWeight": "{text.weights.bold}",
-          "fontSize": "{text.sizes.heading}",
+          "fontWeight": "{text.weights.medium}",
+          "fontSize": "{text.sizes.heading-lg}",
+          "lineHeight": "{text.lineHeights.large}"
+        }
+      },
+      "heading-md": {
+        "$value": {
+          "fontFamily": "{text.fonts.montserrat}",
+          "fontWeight": "{text.weights.medium}",
+          "fontSize": "{text.sizes.heading-md}",
+          "lineHeight": "{text.lineHeights.large}"
+        }
+      },
+      "heading-sm": {
+        "$value": {
+          "fontFamily": "{text.fonts.montserrat}",
+          "fontWeight": "{text.weights.medium}",
+          "fontSize": "{text.sizes.heading-sm}",
           "lineHeight": "{text.lineHeights.large}"
         }
       },
