@@ -1,4 +1,5 @@
 import thumbnail from './opengraph-image.jpeg'
+import Image from "next/image"
 export const thumbnailSrc = thumbnail
 export const title = "New Website!";
 export const metadata = {
@@ -19,6 +20,8 @@ export const metadata = {
 };
 
 # {title}
+
+<Image src={thumbnail} width={1000} height={667} alt="alt text"/>
 
 It's been a while since I've changes anything here, mostly because it was fulfilling it's purpose well enough, but for a while a few things had been bothering me.
 
