@@ -1,4 +1,3 @@
-import { text } from "@styled-system/recipes";
 import Link from "next/link";
 import Image from "next/image";
 import { css, cx } from "@styled-system/css";
@@ -56,21 +55,19 @@ export const BlogPostCard = ({
         />
       </div>
       <h2
-        className={cx(
-          text({ textStyle: "headingSm" }),
-          css({
-            paddingBlockStart: "2",
-            _groupHover: {
-              textDecoration: "underline",
-              textDecorationThickness: "1px",
-            },
-          })
-        )}
+        className={css({
+          textStyle: "heading-sm",
+          paddingBlockStart: "2",
+          _groupHover: {
+            textDecoration: "underline",
+            textDecorationThickness: "1px",
+          },
+        })}
       >
         {title}
       </h2>
-      <p className={text({ textStyle: "body" })}>{subtitle}</p>
-      <p className={text({ textStyle: "body" })}>{`${Intl.DateTimeFormat(
+      <p className={css({ textStyle: "body" })}>{subtitle}</p>
+      <p className={css({ textStyle: "body" })}>{`${Intl.DateTimeFormat(
         "en-GB",
         {
           day: "2-digit",
@@ -78,7 +75,7 @@ export const BlogPostCard = ({
           year: "numeric",
         }
       ).format(parsedDate)}`}</p>
-      <p className={text({ textStyle: "body" })}>{author}</p>
+      <p className={css({ textStyle: "body" })}>{author}</p>
     </Link>
   );
 };

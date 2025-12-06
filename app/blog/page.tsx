@@ -1,8 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { text } from "@styled-system/recipes";
 import { BlogPostCard } from "./_components/BlogPostCard";
-import { css, cx } from "@styled-system/css";
+import { css } from "@styled-system/css";
 
 const BLOG_DIR = path.join(process.cwd(), "app/blog");
 
@@ -54,14 +53,11 @@ export default async function BlogPage() {
           justifyContent: "center",
         })}
       >
-        <h1
-          className={cx(
-            text({ textStyle: "displayLg", color: "onMainAccent" }),
-            css({ gridColumn: "1 / -1" })
-          )}
-        >
+        <h1 className={css({ gridColumn: "1 / -1", textStyle: "display-lg" })}>
           Blog Posts
-          <span className={text({ color: "secondaryAccent" })}>.</span>
+          <span className={css({ color: "foreground.secondary-accent" })}>
+            .
+          </span>
         </h1>
         {posts.map((post) =>
           Array.from({ length: 10 }).map((_, index) => (

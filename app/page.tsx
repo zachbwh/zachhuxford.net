@@ -6,17 +6,14 @@ import { Dropdown } from "@components/Dropdown";
 import { Button } from "@components/Button";
 import { Palette } from "lucide-react";
 import { css } from "@styled-system/css";
-import { text } from "@styled-system/recipes/text";
 
 const GRAVATAR_URL =
   "https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300";
 
 const Name = () => (
-  <span className={text({ textStyle: "inherit", color: "onMainAccent" })}>
+  <span>
     Zach Huxford
-    <span className={text({ textStyle: "inherit", color: "secondaryAccent" })}>
-      .
-    </span>
+    <span className={css({ color: "foreground.secondary-accent" })}>.</span>
   </span>
 );
 
@@ -30,9 +27,9 @@ const Home = () => {
         color: "foreground.on-main-accent",
       })}
     >
-      <p className={text({ textStyle: "body" })}>It's me!</p>
+      <p className={css({ textStyle: "body" })}>It's me!</p>
       <span className={css({ hideBelow: "sm" })}>
-        <h1 className={text({ textStyle: "displayLg" })}>
+        <h1 className={css({ textStyle: "display-lg" })}>
           <Name />
           <Box display="inline-block" verticalAlign="sub" paddingLeft="10">
             <Avatar size="lg" src={GRAVATAR_URL} />
@@ -40,22 +37,22 @@ const Home = () => {
         </h1>
       </span>
       <span className={css({ hideFrom: "sm" })}>
-        <h1 className={text({ textStyle: "displaySm" })}>
+        <h1 className={css({ textStyle: "display-sm" })}>
           <Name />
           <Box display="inline-block" verticalAlign="sub" paddingLeft="5">
             <Avatar size="md" src={GRAVATAR_URL} />
           </Box>
         </h1>
       </span>
-      <p className={text({ textStyle: "body" })}>
+      <p className={css({ textStyle: "body" })}>
         I'm a Software Developer from New Zealand.
       </p>
-      <p className={text({ textStyle: "body" })}>
+      <p className={css({ textStyle: "body" })}>
         I like to spend my spare time browsing wikipedia, reading, listening to
         podcasts and music, and cooking. I'm particularly interested in full
         stack web development, graphic design and Linux.
       </p>
-      <p className={text({ textStyle: "body" })}>
+      <p className={css({ textStyle: "body" })}>
         I care about my work having a positive impact on other people, which is
         why it is important to me that my work has a strong human component,
         whether it is by creating something useful or something beautiful.

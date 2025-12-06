@@ -10,9 +10,6 @@ import tokensBase from "@design-tokens/js/purple/tokens";
 import tokensPandaDark from "@design-tokens/js/dark/tokens-panda";
 import tokensPandaPurple from "@design-tokens/js/purple/tokens-panda";
 
-import { textRecipe } from "@components/Text/recipe";
-import { linkRecipe } from "@components/Link/recipe";
-
 type RecursiveSemanticToken = SemanticTokens[keyof SemanticTokens];
 const mergeSemanticTokens = (
   themedSemanticTokens: { name: string; tokens: SemanticTokens }[]
@@ -75,6 +72,8 @@ const globalCss = defineGlobalStyles({
   },
   "*": {
     fontFamily: tokensDark.text.typography.body.$value.fontFamily,
+    color:
+      tokensDark["semantic-tokens"].colors.foreground["on-main-accent"].$value,
   },
 });
 
@@ -145,12 +144,6 @@ export default defineConfig({
       shadows: { ...tokensPandaDark.shadows },
     },
     semanticTokens: mergedSemanticTokens,
-    extend: {
-      recipes: {
-        text: textRecipe,
-        link: linkRecipe,
-      },
-    },
   },
   strictTokens: true,
   strictPropertyValues: true,

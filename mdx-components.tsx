@@ -1,16 +1,17 @@
 import type { MDXComponents } from "mdx/types";
-import { text, link } from "@styled-system/recipes";
 import { css } from "@styled-system/css";
 import Link from "next/link";
+import Image from "next/image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
       <h1
-        className={text({
-          textStyle: {
-            base: "displayMd",
-            sm: "displayLg",
+        className={css({
+          textStyle: "display-md",
+          color: "foreground.on-main-accent",
+          sm: {
+            textStyle: "display-lg",
           },
         })}
       >
@@ -19,21 +20,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => (
       <h2
-        className={text({ textStyle: { base: "displaySm", sm: "displayLg" } })}
+        className={css({
+          textStyle: "display-sm",
+          sm: { textStyle: "display-lg" },
+        })}
       >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
       <h3
-        className={text({ textStyle: { base: "displayXs", sm: "displayMd" } })}
+        className={css({
+          textStyle: "display-xs",
+          sm: { textStyle: "display-md" },
+        })}
       >
         {children}
       </h3>
     ),
     h4: ({ children }) => (
       <h4
-        className={text({ textStyle: { base: "displayXs", sm: "displaySm" } })}
+        className={css({
+          textStyle: "display-xs",
+          sm: { textStyle: "display-sm" },
+        })}
       >
         {children}
       </h4>
@@ -63,17 +73,34 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </ul>
     ),
     p: ({ children }) => (
-      <p className={text({ textStyle: "body" })}>{children}</p>
+      <p
+        className={css({
+          textStyle: "body",
+          paddingY: "2",
+        })}
+      >
+        {children}
+      </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className={text({ textStyle: "body" })}>
-        {children}
-      </blockquote>
+      <blockquote className={css({ textStyle: "body" })}>{children}</blockquote>
     ),
     a: ({ children, href }) => (
-      <Link className={link()} href={href}>
+      <Link
+        className={css({ _hover: { textDecoration: "underline" } })}
+        href={href}
+      >
         {children}
       </Link>
+    ),
+    img: (props) => (
+      <Image
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
+        height={200}
+        width={300}
+        {...props}
+      />
     ),
     ...components,
   };
