@@ -82,7 +82,9 @@ const Home = () => {
             />
           )}
           onItemAction={(key) => {
-            document.documentElement.setAttribute("data-theme", key);
+            document.startViewTransition(() => {
+              document.documentElement.setAttribute("data-theme", key);
+            });
           }}
         >
           {[
