@@ -5,32 +5,31 @@
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "npx @biomejs/biome check",
-    "lint:fix": "npx @biomejs/biome check --write",
-    "build:tokens": "cd design-tokens && node tokens/build.js"
+    "dev": "astro dev",
+    "generate:og": "./scripts/generate-all-og-images.sh",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "test": "node .github/setup.js"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.5",
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.3.1",
-    "@types/mdx": "^2.0.13",
-    "lucide": "^0.487.0",
-    "lucide-react": "^0.487.0",
-    "next": "15.2.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@astrojs/mdx": "^5.0.3",
+    "@lucide/astro": "^1.8.0",
+    "astro": "^6.1.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@pandacss/dev": "^0.53.3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "style-dictionary": "^4.3.3",
-    "typescript": "^5"
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/language-server": "^2.16.6",
+    "@pandacss/dev": "^1.9.1",
+    "@pandacss/eslint-plugin": "^0.3.2",
+    "@types/node": "^24.7.0",
+    "oxfmt": "^0.45.0",
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^0.21.1",
+    "typescript": "^5.9.3"
   }
 }
