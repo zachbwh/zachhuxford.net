@@ -1,0 +1,207 @@
+---
+import { css } from "@styled-system/css";
+
+const triggerClass = css({
+  padding: "2",
+  borderRadius: "2",
+  color: "foreground.on-main-accent",
+  backgroundColor: "background.secondary",
+  width: "[min-content]",
+  cursor: "pointer",
+  transition: "[background, transform]",
+  transitionDuration: "100ms",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  outlineWidth: "0",
+  position: "relative",
+  _hover: {
+    backgroundColor: "background.secondary-hover",
+  },
+  _active: {
+    transform: "scale(0.96)",
+    backgroundColor: "background.secondary-active",
+  },
+  _focusVisible: {
+    _before: {
+      content: '""',
+      position: "absolute",
+      top: "0",
+      left: "0",
+      right: "0",
+      bottom: "0",
+      borderRadius: "[inherit]",
+      outlineWidth: "2",
+      outlineOffset: "0",
+      outlineStyle: "solid",
+      outlineColor: "foreground.on-main-accent",
+    },
+  },
+});
+
+const popoverClass = css({
+  position: "fixed",
+  margin: "0",
+  padding: "2",
+  borderRadius: "2",
+  backgroundColor: "background.main-accent",
+  border: "outline",
+  shadow: "lg",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1",
+  minWidth: "[120px]",
+  "&:popover-open": {
+    display: "flex",
+  },
+});
+
+const menuItemClass = css({
+  padding: "2",
+  borderRadius: "2",
+  color: "foreground.on-main-accent",
+  backgroundColor: "background.secondary",
+  textStyle: "body",
+  textAlign: "left",
+  cursor: "pointer",
+  outlineWidth: "0",
+  _hover: {
+    backgroundColor: "background.secondary-hover",
+  },
+  _focus: {
+    backgroundColor: "background.secondary-hover",
+    outlineWidth: "0",
+  },
+});
+---
+
+<div class="theme-switcher">
+  <button
+    id="theme-trigger"
+    popovertarget="theme-popover"
+    class={triggerClass}
+    aria-label="Change theme"
+    aria-haspopup="menu"
+    type="button"
+  >
+    <!-- Palette icon (Lucide) -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+      <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+      <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+      <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+      <path
+        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"
+      ></path>
+    </svg>
+  </button>
+
+  <div
+    id="theme-popover"
+    popover
+    class={popoverClass}
+    role="menu"
+    aria-label="Theme options"
+  >
+    <button
+      class={menuItemClass}
+      role="menuitem"
+      data-theme-value="purple"
+      type="button"
+    >
+      Purple
+    </button>
+    <button
+      class={menuItemClass}
+      role="menuitem"
+      data-theme-value="dark"
+      type="button"
+    >
+      Dark
+    </button>
+  </div>
+</div>
+
+<script>
+  import { computePosition, offset, flip, shift } from "@floating-ui/dom";
+
+  function initThemeSwitcher() {
+    const trigger = document.getElementById("theme-trigger") as HTMLButtonElement | null;
+    const popover = document.getElementById("theme-popover") as HTMLElement | null;
+
+    if (!trigger || !popover) return;
+
+    const menuItems = Array.from(
+      popover.querySelectorAll<HTMLButtonElement>("[role=menuitem]")
+    );
+
+    // Position the popover using Floating UI when it opens
+    popover.addEventListener("toggle", async (event) => {
+      const toggleEvent = event as ToggleEvent;
+      if (toggleEvent.newState === "open") {
+        const { x, y } = await computePosition(trigger, popover, {
+          placement: "bottom-end",
+          middleware: [offset(4), flip(), shift({ padding: 8 })],
+        });
+        Object.assign(popover.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+        // Focus first item when opened via keyboard (not pointer)
+        if (!trigger.matches(":active")) {
+          menuItems[0]?.focus();
+        }
+      }
+    });
+
+    // Keyboard navigation within the menu
+    popover.addEventListener("keydown", (event) => {
+      const focused = document.activeElement;
+      const currentIndex = menuItems.indexOf(focused as HTMLButtonElement);
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        menuItems[(currentIndex + 1) % menuItems.length]?.focus();
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        menuItems[(currentIndex - 1 + menuItems.length) % menuItems.length]?.focus();
+      } else if (event.key === "Tab") {
+        // Close on tab-out
+        popover.hidePopover();
+      }
+    });
+
+    // Apply theme on menu item click
+    for (const item of menuItems) {
+      item.addEventListener("click", () => {
+        const theme = item.dataset.themeValue;
+        if (!theme) return;
+
+        popover.hidePopover();
+
+        if (document.startViewTransition) {
+          document.startViewTransition(() => {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+          });
+        } else {
+          document.documentElement.setAttribute("data-theme", theme);
+          localStorage.setItem("theme", theme);
+        }
+      });
+    }
+  }
+
+  initThemeSwitcher();
+</script>

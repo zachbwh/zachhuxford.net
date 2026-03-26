@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import { css } from "@styled-system/css";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  publishedTime={post.data.publishedTime}
+  authors={post.data.authors}
+  thumbnail={post.data.thumbnail}
+>
+  <div
+    class={css({
+      display: "flex",
+      flexDirection: "column",
+      gap: "2",
+      color: "foreground.on-main-accent",
+    })}
+  >
+    <Content />
+  </div>
+</BlogLayout>

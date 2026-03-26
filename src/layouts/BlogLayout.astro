@@ -1,0 +1,41 @@
+---
+import { css } from "@styled-system/css";
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/prose.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  publishedTime: string;
+  authors: string[];
+  thumbnail?: string;
+}
+
+const { title, description, publishedTime, authors, thumbnail } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+}).format(new Date(publishedTime));
+---
+
+<BaseLayout title={`Blog - ${title}`} description={description}>
+  <article
+    class={css({
+      display: "flex",
+      flexDirection: "column",
+      gap: "4",
+      color: "foreground.on-main-accent",
+    })}
+  >
+    {thumbnail && <img src={thumbnail} alt={title} class={css({ width: "[100%]", borderRadius: "2" })} />}
+    <div class={css({ textStyle: "body" })}>
+      <span>{formattedDate}</span>
+      {authors.map((author) => <span> · {author}</span>)}
+    </div>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import { css } from "@styled-system/css";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+const posts = await getCollection("blog");
+const sortedPosts = posts.sort(
+  (a, b) =>
+    new Date(b.data.publishedTime).getTime() -
+    new Date(a.data.publishedTime).getTime()
+);
+---
+
+<BaseLayout title="Blog — Zach Huxford" description="Writing by Zach Huxford">
+  <div>
+    <ul
+      class={css({
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+        columnGap: "6",
+        rowGap: "10",
+        listStyle: "none",
+        padding: "0",
+        margin: "0",
+      })}
+    >
+      <li class={css({ gridColumn: "1 / -1" })}>
+        <h1 class={css({ textStyle: "display-lg" })}>
+          Blog Posts<span class={css({ color: "foreground.secondary-accent" })}>.</span>
+        </h1>
+      </li>
+      {
+        sortedPosts.map((post) => (
+          <li class={css({ gridColumn: "auto" })}>
+            <BlogCard
+              href={`/blog/${post.slug}`}
+              thumbnailSrc={post.data.thumbnail}
+              title={post.data.title}
+              subtitle={post.data.description}
+              date={post.data.publishedTime}
+              author={post.data.authors[0]}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import { css } from "@styled-system/css";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "My Story", href: "/my-story" },
+  { label: "Blog", href: "/blog" },
+];
+
+const navigation = css({
+  width: "[100%]",
+  paddingBlock: "4",
+  paddingInline: "2",
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "center",
+});
+
+const navigationList = css({
+  display: "flex",
+  listStyle: "none",
+  margin: "0",
+  padding: "0",
+});
+
+const navigationItem = css({
+  display: "inline-block",
+  padding: "2",
+});
+
+const navigationLink = css({
+  padding: "2",
+  borderRadius: "2",
+  color: "foreground.on-main-accent",
+  textStyle: "body",
+  outlineWidth: "0",
+  position: "relative",
+  _hover: {
+    textDecoration: "underline",
+  },
+  _focusVisible: {
+    _before: {
+      content: '""',
+      position: "absolute",
+      top: "0",
+      left: "0",
+      right: "0",
+      bottom: "0",
+      borderRadius: "[inherit]",
+      outlineWidth: "2",
+      outlineOffset: "0",
+      outlineStyle: "solid",
+      outlineColor: "foreground.on-main-accent",
+    },
+  },
+});
+---
+
+<nav class={navigation}>
+  <ul class={navigationList}>
+    {
+      navItems.map((item) => (
+        <li class={navigationItem}>
+          <a href={item.href} class={navigationLink}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <ThemeSwitcher />
+</nav>

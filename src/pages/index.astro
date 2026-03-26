@@ -1,0 +1,64 @@
+---
+import { css } from "@styled-system/css";
+import { stack } from "@styled-system/patterns";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Avatar from "../components/Avatar.astro";
+
+const GRAVATAR_URL =
+  "https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300";
+---
+
+<BaseLayout>
+  <section
+    class={stack({
+      direction: "column",
+      gap: "4",
+      justifyContent: "center",
+      color: "foreground.on-main-accent",
+    })}
+  >
+    <p class={css({ textStyle: "body" })}>It's me!</p>
+
+    <!-- Desktop -->
+    <h1 class={css({ textStyle: "display-lg", hideBelow: "sm" })}>
+      Zach Huxford<span class={css({ color: "foreground.secondary-accent" })}>.</span>
+      <span
+        class={css({
+          display: "inline-block",
+          verticalAlign: "sub",
+          paddingLeft: "10",
+        })}
+      >
+        <Avatar size="lg" src={GRAVATAR_URL} />
+      </span>
+    </h1>
+
+    <!-- Mobile -->
+    <h1 class={css({ textStyle: "display-sm", hideFrom: "sm" })}>
+      Zach Huxford<span class={css({ color: "foreground.secondary-accent" })}>.</span>
+      <span
+        class={css({
+          display: "inline-block",
+          verticalAlign: "sub",
+          paddingLeft: "5",
+        })}
+      >
+        <Avatar size="md" src={GRAVATAR_URL} />
+      </span>
+    </h1>
+
+    <p class={css({ textStyle: "body" })}>
+      I'm a Software Developer from New Zealand.
+    </p>
+    <p class={css({ textStyle: "body" })}>
+      I like to spend my spare time browsing wikipedia, reading, listening to
+      podcasts and music, and cooking. I'm particularly interested in full stack
+      web development, graphic design and Linux.
+    </p>
+    <p class={css({ textStyle: "body" })}>
+      I care about my work having a positive impact on other people, which is
+      why it is important to me that my work has a strong human component,
+      whether it is by creating something useful or something beautiful.
+    </p>
+  </section>
+</BaseLayout>

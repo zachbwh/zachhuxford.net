@@ -1,0 +1,127 @@
+/* Styles for MDX-rendered blog content */
+.prose h1 {
+  font-family: var(--font-karla), sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.2;
+  padding-block: var(--spacing-2);
+  color: var(--colors-foreground-on-main-accent);
+}
+
+@media (min-width: 640px) {
+  .prose h1 {
+    font-size: 56px;
+  }
+}
+
+.prose h2 {
+  font-family: var(--font-karla), sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.2;
+  padding-block: var(--spacing-2);
+}
+
+@media (min-width: 640px) {
+  .prose h2 {
+    font-size: 56px;
+  }
+}
+
+.prose h3 {
+  font-family: var(--font-karla), sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  padding-block: var(--spacing-2);
+}
+
+@media (min-width: 640px) {
+  .prose h3 {
+    font-size: 48px;
+  }
+}
+
+.prose h4 {
+  font-family: var(--font-karla), sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  padding-block: var(--spacing-2);
+}
+
+@media (min-width: 640px) {
+  .prose h4 {
+    font-size: 40px;
+  }
+}
+
+.prose p {
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  padding-block: var(--spacing-2);
+}
+
+.prose ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  color: var(--colors-foreground-on-main-accent);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.prose ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  color: var(--colors-foreground-on-main-accent);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.prose li {
+  padding-block: var(--spacing-1);
+}
+
+.prose blockquote {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  border-left: 4px solid var(--colors-foreground-secondary-accent);
+  padding-left: var(--spacing-4);
+  opacity: 0.8;
+}
+
+.prose a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  opacity: 0.8;
+}
+
+.prose img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radii-2);
+}
+
+.prose pre,
+.prose code {
+  font-family: var(--font-inconsolata), monospace;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.prose pre {
+  padding: var(--spacing-4);
+  border-radius: var(--radii-2);
+  overflow-x: auto;
+  background-color: var(--colors-background-secondary-hover);
+  margin-block: var(--spacing-2);
+}

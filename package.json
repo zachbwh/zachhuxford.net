@@ -5,32 +5,22 @@
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "lint": "npx @biomejs/biome check",
-    "lint:fix": "npx @biomejs/biome check --write",
-    "build:tokens": "cd design-tokens && node tokens/build.js"
+    "lint:fix": "npx @biomejs/biome check --write"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.5",
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.3.1",
-    "@types/mdx": "^2.0.13",
-    "lucide": "^0.487.0",
-    "lucide-react": "^0.487.0",
-    "next": "15.2.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@astrojs/mdx": "^4.3.0",
+    "@floating-ui/dom": "^1.6.13",
+    "astro": "^5.7.2",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@pandacss/dev": "^0.53.3",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "style-dictionary": "^4.3.3",
     "typescript": "^5"
   }
 }

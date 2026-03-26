@@ -1,0 +1,57 @@
+---
+import { css } from "@styled-system/css";
+import Navigation from "@components/Navigation.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Zach Huxford", description = "SWE from NZ, based in London" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="purple">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300..700&family=Karla:wght@300..700&family=Montserrat:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Apply saved theme before first paint to avoid flash -->
+    <script is:inline>
+      const saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    </script>
+  </head>
+  <body
+    class={css({
+      backgroundColor: "background.main-accent",
+      minHeight: "[100dvh]",
+      position: "relative",
+    })}
+  >
+    <Navigation />
+    <div
+      class={css({
+        maxWidth: "breakpoint-lg",
+        marginInline: "auto",
+        paddingInline: "5",
+        paddingBlock: "20",
+        paddingBlockStart: "7",
+        sm: {
+          paddingInline: "10",
+          paddingBlockStart: "20",
+        },
+      })}
+    >
+      <slot />
+    </div>
+  </body>
+</html>
