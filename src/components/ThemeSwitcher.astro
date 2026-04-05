@@ -1,5 +1,6 @@
 ---
 import { css } from "@styled-system/css";
+import { Palette, Check } from "@lucide/astro";
 
 const selectClass = css({
   padding: "2",
@@ -19,6 +20,7 @@ const selectClass = css({
   _active: {
     backgroundColor: "background.secondary-active",
   },
+  width: "[min-content]",
   _focusVisible: {
     outlineWidth: "2",
     outlineStyle: "solid",
@@ -48,14 +50,27 @@ const selectClass = css({
     backgroundColor: "background.secondary-hover",
   },
   "& option:checked": {
-    backgroundColor: "background.primary",
+    // backgroundColor: "background.primary",
+  },
+  "& option::checkmark": {
+    display: "none",
   },
 });
 ---
 
 <select id="theme-select" class={selectClass} aria-label="Change theme">
-  <option value="purple">Purple</option>
-  <option value="dark">Dark</option>
+  <button class={css({ display: "flex", alignItems: "center", gap: "1" })}>
+    <Palette size={16} stroke-width={1.5} aria-hidden="true" />
+    <selectedcontent class={css({ srOnly: true })} />
+  </button>
+  <option value="purple">
+    Purple
+    <span class={css({ display: "none", "option:checked &": { display: "block" } })}><Check size={14} stroke-width={2} aria-hidden="true" /></span>
+  </option>
+  <option value="dark">
+    Dark
+    <span class={css({ display: "none", "option:checked &": { display: "block" } })}><Check size={14} stroke-width={2} aria-hidden="true" /></span>
+  </option>
 </select>
 
 <script>
