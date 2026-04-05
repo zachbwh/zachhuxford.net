@@ -1,5 +1,5 @@
 import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
-import zachhuxfordPreset from "./panda.preset";
+import websitePreset from "./panda.preset";
 
 const globalCss = defineGlobalStyles({
   "*": {
@@ -19,7 +19,7 @@ export default defineConfig({
     purpleTheme: "[data-theme=purple] &",
   },
 
-  presets: [zachhuxfordPreset],
+  presets: [websitePreset],
 
   strictTokens: true,
   strictPropertyValues: true,
