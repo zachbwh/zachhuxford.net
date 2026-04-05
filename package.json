@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@pandacss/dev": "^0.53.3",
+    "@pandacss/dev": "^1.9.1",
     "@types/node": "^20",
     "typescript": "^5"
   }

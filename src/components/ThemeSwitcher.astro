@@ -51,7 +51,7 @@ const popoverClass = css({
   flexDirection: "column",
   gap: "1",
   minWidth: "[120px]",
-  "&:popover-open": {
+  _open: {
     display: "flex",
   },
 });
@@ -71,6 +71,9 @@ const menuItemClass = css({
   _focus: {
     backgroundColor: "background.secondary-hover",
     outlineWidth: "0",
+  },
+  _checked: {
+    backgroundColor: "background.primary",
   },
 });
 ---
@@ -96,7 +99,7 @@ const menuItemClass = css({
   >
     <button
       class={menuItemClass}
-      role="menuitem"
+      role="menuitemradio"
       data-theme-value="purple"
       type="button"
     >
@@ -104,7 +107,7 @@ const menuItemClass = css({
     </button>
     <button
       class={menuItemClass}
-      role="menuitem"
+      role="menuitemradio"
       data-theme-value="dark"
       type="button"
     >
@@ -123,13 +126,22 @@ const menuItemClass = css({
     if (!trigger || !popover) return;
 
     const menuItems = Array.from(
-      popover.querySelectorAll<HTMLButtonElement>("[role=menuitem]")
+      popover.querySelectorAll<HTMLButtonElement>("[role=menuitemradio]")
     );
+
+    function syncChecked() {
+      const current = document.documentElement.getAttribute("data-theme");
+      for (const item of menuItems) {
+        item.setAttribute("aria-checked", String(item.dataset.themeValue === current));
+      }
+    }
 
     // Position the popover using Floating UI when it opens
     popover.addEventListener("toggle", async (event) => {
       const toggleEvent = event as ToggleEvent;
       if (toggleEvent.newState === "open") {
+        syncChecked();
+
         const { x, y } = await computePosition(trigger, popover, {
           placement: "bottom-end",
           middleware: [offset(4), flip(), shift({ padding: 8 })],
@@ -138,10 +150,12 @@ const menuItemClass = css({
           left: `${x}px`,
           top: `${y}px`,
         });
-        // Focus first item when opened via keyboard (not pointer)
-        if (!trigger.matches(":active")) {
-          menuItems[0]?.focus();
-        }
+
+        // Focus the currently selected item
+        const selected = menuItems.find(
+          (item) => item.getAttribute("aria-checked") === "true"
+        );
+        (selected ?? menuItems[0])?.focus();
       }
     });
 
@@ -170,14 +184,15 @@ const menuItemClass = css({
 
         popover.hidePopover();
 
-        if (document.startViewTransition) {
-          document.startViewTransition(() => {
-            document.documentElement.setAttribute("data-theme", theme);
-            localStorage.setItem("theme", theme);
-          });
-        } else {
+        const apply = () => {
           document.documentElement.setAttribute("data-theme", theme);
           localStorage.setItem("theme", theme);
+        };
+
+        if (document.startViewTransition) {
+          document.startViewTransition(apply);
+        } else {
+          apply();
         }
       });
     }
