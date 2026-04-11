@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "astro-lsp@zachhuxford-io": true,
+    "oxlint-lsp@zachhuxford-io": true
+  },
+  "extraKnownMarketplaces": {
+    "zachhuxford-io": {
+      "source": {
+        "source": "github",
+        "repo": "zachbwh/zachhuxford.io"
+      }
+    }
+  }
+}
