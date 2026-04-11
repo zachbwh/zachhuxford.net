@@ -26,6 +26,13 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const contentWrapperClass = css({
+  display: "flex",
+  flexDirection: "column",
+  gap: "2",
+  color: "foreground.on-main-accent",
+});
 ---
 
 <BlogLayout
@@ -35,14 +42,7 @@ const { Content } = await post.render();
   authors={post.data.authors}
   thumbnail={post.data.thumbnail}
 >
-  <div
-    class={css({
-      display: "flex",
-      flexDirection: "column",
-      gap: "2",
-      color: "foreground.on-main-accent",
-    })}
-  >
+  <div class={contentWrapperClass}>
     <Content
       components={{
         h1: MarkdownH1,

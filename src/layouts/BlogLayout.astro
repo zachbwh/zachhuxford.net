@@ -17,22 +17,31 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
   month: "long",
   year: "numeric",
 }).format(new Date(publishedTime));
+
+const articleClass = css({
+  display: "flex",
+  flexDirection: "column",
+  gap: "4",
+  color: "foreground.on-main-accent",
+});
+
+const headerClass = css({ textStyle: "body" });
+const titleClass = css({ textStyle: "display-xl" });
+const thumbnailClass = css({
+  width: "[100%]",
+  maxWidth: "breakpoint-md",
+  borderRadius: "2",
+  marginInline: "auto",
+});
 ---
 
 <BaseLayout title={`Blog - ${title}`} description={description}>
-  <article
-    class={css({
-      display: "flex",
-      flexDirection: "column",
-      gap: "4",
-      color: "foreground.on-main-accent",
-    })}
-  >
-    <div class={css({ textStyle: "body" })}>
-      <h1 class={css({ textStyle: 'display-xl'})}>{title}</h1>
+  <article class={articleClass}>
+    <div class={headerClass}>
+      <h1 class={titleClass}>{title}</h1>
       <span>{formattedDate}</span>
       {authors.map((author) => <span> · {author}</span>)}
-      {thumbnail && <img src={thumbnail} alt={title} class={css({ width: "[100%]", maxWidth: 'breakpoint-md', borderRadius: "2", marginInline: 'auto' })} />}
+      {thumbnail && <img src={thumbnail} alt={title} class={thumbnailClass} />}
     </div>
     <slot />
   </article>

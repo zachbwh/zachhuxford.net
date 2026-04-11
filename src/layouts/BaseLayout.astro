@@ -9,6 +9,31 @@ interface Props {
 }
 
 const { title = "Zach Huxford", description = "SWE from NZ, based in London" } = Astro.props;
+
+const bodyClass = css({
+  backgroundColor: "background.main-accent",
+  minHeight: "[100dvh]",
+  position: "relative",
+});
+
+const navWrapperClass = css({
+  maxWidth: "breakpoint-lg",
+  marginInline: "auto",
+  paddingInline: "5",
+  sm: { paddingInline: "10" },
+});
+
+const mainWrapperClass = css({
+  maxWidth: "breakpoint-lg",
+  marginInline: "auto",
+  paddingInline: "5",
+  paddingBlock: "20",
+  paddingBlockStart: "7",
+  sm: {
+    paddingInline: "10",
+    paddingBlockStart: "20",
+  },
+});
 ---
 
 <!doctype html>
@@ -30,29 +55,11 @@ const { title = "Zach Huxford", description = "SWE from NZ, based in London" } =
       if (saved) document.documentElement.setAttribute("data-theme", saved);
     </script>
   </head>
-  <body
-    class={css({
-      backgroundColor: "background.main-accent",
-      minHeight: "[100dvh]",
-      position: "relative",
-    })}
-  >
-    <div class={css({maxWidth: 'breakpoint-lg', marginInline: 'auto', paddingInline: '5', sm: { paddingInline: '10'}})}>
+  <body class={bodyClass}>
+    <div class={navWrapperClass}>
       <Navigation />
     </div>
-    <div
-      class={css({
-        maxWidth: "breakpoint-lg",
-        marginInline: "auto",
-        paddingInline: "5",
-        paddingBlock: "20",
-        paddingBlockStart: "7",
-        sm: {
-          paddingInline: "10",
-          paddingBlockStart: "20",
-        },
-      })}
-    >
+    <div class={mainWrapperClass}>
       <slot />
     </div>
   </body>

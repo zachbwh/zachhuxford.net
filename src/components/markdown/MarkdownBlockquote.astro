@@ -1,16 +1,15 @@
 ---
 import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "body",
+  borderInlineStart: "[4px solid]",
+  borderInlineStartColor: "foreground.secondary-accent",
+  paddingInlineStart: "4",
+  opacity: "[0.8]",
+});
 ---
 
-<blockquote
-  class={css({
-    textStyle: "body",
-    borderLeft: "[4px solid]",
-    borderLeftColor: "foreground.secondary-accent",
-    paddingLeft: "4",
-    opacity: "[0.8]",
-  })}
-  {...Astro.props}
->
+<blockquote class={className} {...Astro.props}>
   <slot />
 </blockquote>

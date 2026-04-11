@@ -1,15 +1,14 @@
 ---
 import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "code",
+  padding: "4",
+  borderRadius: "2",
+  overflow: "[auto]",
+  backgroundColor: "background.secondary-hover",
+  marginBlock: "2",
+});
 ---
 
-<pre
-  class={css({
-    textStyle: "code",
-    padding: "4",
-    borderRadius: "2",
-    overflow: "[auto]",
-    backgroundColor: "background.secondary-hover",
-    marginBlock: "2",
-  })}
-  {...Astro.props}
-><slot /></pre>
+<pre class={className} {...Astro.props}><slot /></pre>

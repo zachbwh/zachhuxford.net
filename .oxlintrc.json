@@ -1,8 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "jsPlugins": [
-    "@pandacss/eslint-plugin"
-  ],
+  "jsPlugins": ["@pandacss/eslint-plugin"],
   "rules": {
     "@pandacss/file-not-included": "error",
     "@pandacss/no-config-function-in-source": "error",
@@ -13,7 +11,8 @@
     "@pandacss/no-invalid-token-paths": "error",
     "@pandacss/no-property-renaming": "warn",
     "@pandacss/no-unsafe-token-fn-usage": "warn",
-    "@pandacss/no-deprecated-tokens": "warn"
+    "@pandacss/no-deprecated-tokens": "warn",
+    "@pandacss/no-physical-properties": "error"
   },
   "ignorePatterns": ["**/*.js"],
   "options": {

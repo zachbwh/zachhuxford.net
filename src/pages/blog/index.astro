@@ -10,29 +10,34 @@ const sortedPosts = posts.sort(
     new Date(b.data.publishedTime).getTime() -
     new Date(a.data.publishedTime).getTime()
 );
+
+const gridClass = css({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  columnGap: "6",
+  rowGap: "10",
+  listStyle: "none",
+  padding: "0",
+  margin: "0",
+});
+
+const fullWidthClass = css({ gridColumn: "1 / -1" });
+const headingClass = css({ textStyle: "display-lg" });
+const accentClass = css({ color: "foreground.secondary-accent" });
+const autoColumnClass = css({ gridColumn: "auto" });
 ---
 
 <BaseLayout title="Blog — Zach Huxford" description="Writing by Zach Huxford">
   <div>
-    <ul
-      class={css({
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-        columnGap: "6",
-        rowGap: "10",
-        listStyle: "none",
-        padding: "0",
-        margin: "0",
-      })}
-    >
-      <li class={css({ gridColumn: "1 / -1" })}>
-        <h1 class={css({ textStyle: "display-lg" })}>
-          Blog Posts<span class={css({ color: "foreground.secondary-accent" })}>.</span>
+    <ul class={gridClass}>
+      <li class={fullWidthClass}>
+        <h1 class={headingClass}>
+          Blog Posts<span class={accentClass}>.</span>
         </h1>
       </li>
       {
         sortedPosts.map((post) => (
-          <li class={css({ gridColumn: "auto" })}>
+          <li class={autoColumnClass}>
             <BlogCard
               href={`/blog/${post.slug}`}
               thumbnailSrc={post.data.thumbnail}

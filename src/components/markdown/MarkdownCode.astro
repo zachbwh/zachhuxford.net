@@ -1,10 +1,9 @@
 ---
 import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "code",
+});
 ---
 
-<code
-  class={css({
-    textStyle: "code",
-  })}
-  {...Astro.props}
-><slot /></code>
+<code class={className} {...Astro.props}><slot /></code>

@@ -1,13 +1,12 @@
 ---
 import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "body",
+  paddingBlock: "2",
+});
 ---
 
-<p
-  class={css({
-    textStyle: "body",
-    paddingBlock: "2",
-  })}
-  {...Astro.props}
->
+<p class={className} {...Astro.props}>
   <slot />
 </p>

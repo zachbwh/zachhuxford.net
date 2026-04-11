@@ -47,12 +47,15 @@ const selectClass = css({
     }
   },
 });
+
+const buttonClass = css({ display: "flex", alignItems: "center", gap: "1" });
+const selectedContentClass = css({ srOnly: true });
 ---
 
 <select id="theme-select" class={selectClass} aria-label="Change theme">
-  <button class={css({ display: "flex", alignItems: "center", gap: "1" })}>
+  <button class={buttonClass}>
     <Palette size={16} stroke-width={1.5} aria-hidden="true" />
-    <selectedcontent class={css({ srOnly: true })} />
+    <selectedcontent class={selectedContentClass} />
   </button>
   <option value="purple">Purple</option>
   <option value="dark">Dark</option>

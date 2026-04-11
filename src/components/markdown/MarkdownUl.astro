@@ -1,15 +1,14 @@
 ---
 import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "body",
+  listStyleType: "[circle]",
+  listStylePosition: "[inside]",
+  color: "foreground.on-main-accent",
+});
 ---
 
-<ul
-  class={css({
-    textStyle: "body",
-    listStyleType: "[circle]",
-    listStylePosition: "[inside]",
-    color: "foreground.on-main-accent",
-  })}
-  {...Astro.props}
->
+<ul class={className} {...Astro.props}>
   <slot />
 </ul>
