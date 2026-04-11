@@ -37,7 +37,9 @@ const { title = "Zach Huxford", description = "SWE from NZ, based in London" } =
       position: "relative",
     })}
   >
-    <Navigation />
+    <div class={css({maxWidth: 'breakpoint-lg', marginInline: 'auto', paddingInline: '5'})}>
+      <Navigation />
+    </div>
     <div
       class={css({
         maxWidth: "breakpoint-lg",
