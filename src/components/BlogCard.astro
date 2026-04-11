@@ -3,7 +3,7 @@ import { css } from "@styled-system/css";
 
 interface Props {
   href: string;
-  thumbnailSrc?: string;
+  thumbnailSrc: ImageMetadata;
   title: string;
   subtitle?: string;
   date: string;
@@ -36,20 +36,16 @@ const bodyClass = css({ textStyle: "body" });
 ---
 
 <a href={href} class={linkClass + " group"}>
-  {
-    thumbnailSrc && (
-      <div class={imageWrapperClass}>
-        <img
-          src={thumbnailSrc}
-          alt={title}
-          width={300}
-          height={200}
-          class={imageClass}
-          style="transition: transform 200ms ease-in-out;"
-        />
-      </div>
-    )
-  }
+  <div class={imageWrapperClass}>
+    <img
+      src={thumbnailSrc.src}
+      alt={title}
+      width={thumbnailSrc.width}
+      height={thumbnailSrc.height}
+      class={imageClass}
+      style="transition: transform 200ms ease-in-out;"
+    />
+  </div>
   <h2 class={titleClass}>{title}</h2>
   {subtitle && <p class={bodyClass}>{subtitle}</p>}
   <p class={bodyClass}>{formattedDate}</p>

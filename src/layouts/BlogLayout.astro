@@ -7,7 +7,7 @@ interface Props {
   description?: string;
   publishedTime: string;
   authors: string[];
-  thumbnail?: string;
+  thumbnail: ImageMetadata;
 }
 
 const { title, description, publishedTime, authors, thumbnail } = Astro.props;
@@ -41,7 +41,7 @@ const thumbnailClass = css({
       <h1 class={titleClass}>{title}</h1>
       <span>{formattedDate}</span>
       {authors.map((author) => <span> · {author}</span>)}
-      {thumbnail && <img src={thumbnail} alt={title} class={thumbnailClass} />}
+      <img src={thumbnail.src} alt={title} width={thumbnail.width} height={thumbnail.height} class={thumbnailClass} />
     </div>
     <slot />
   </article>
