@@ -3,7 +3,7 @@ import { css } from "@styled-system/css";
 import { Palette } from "@lucide/astro";
 
 const selectClass = css({
-  padding: "2",
+  padding: "1",
   borderRadius: "2",
   color: "foreground.on-main-accent",
   backgroundColor: "background.secondary",
@@ -11,9 +11,8 @@ const selectClass = css({
   textStyle: "body",
   appearance: "[base-select]",
   border: "[none]",
-  outlineWidth: "0",
   transition: "[background]",
-  transitionDuration: "100ms",
+  transitionDuration: "fast",
   _hover: {
     backgroundColor: "background.secondary-hover",
   },
@@ -21,12 +20,6 @@ const selectClass = css({
     backgroundColor: "background.secondary-active",
   },
   width: "[min-content]",
-  _focusVisible: {
-    outlineWidth: "2",
-    outlineStyle: "solid",
-    outlineColor: "foreground.on-main-accent",
-    outlineOffset: "[2px]",
-  },
   "&::picker(select)": {
     appearance: "[base-select]",
     backgroundColor: "background.main-accent",
@@ -42,18 +35,16 @@ const selectClass = css({
     borderRadius: "2",
     color: "foreground.on-main-accent",
     backgroundColor: "background.secondary",
-  },
-  "& option:hover": {
-    backgroundColor: "background.secondary-hover",
-  },
-  "& option:focus": {
-    backgroundColor: "background.secondary-hover",
-  },
-  "& option:checked": {
-    // backgroundColor: "background.primary",
-  },
-  "& option::checkmark": {
-    content: "['\\2713']",
+    _hover: {
+      backgroundColor: "background.secondary-hover",
+    },
+    _focus: {
+      // outline: "none",
+      backgroundColor: "background.secondary-hover",
+    },
+    "&::checkmark": {
+      content: "['\\2713']",
+    }
   },
 });
 ---

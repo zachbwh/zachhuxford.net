@@ -6,6 +6,11 @@ const globalCss = defineGlobalStyles({
   "*": {
     fontFamily: "var(--font-montserrat), sans-serif",
     color: "oklch(1 0 0)",
+    _focusVisible: {
+      outlineWidth: "2",
+      outlineStyle: "solid",
+      outlineColor: "foreground.on-main-accent",
+    },
   },
 });
 
