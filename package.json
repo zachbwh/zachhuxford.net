@@ -22,6 +22,7 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@astrojs/language-server": "^2.16.6",
     "@biomejs/biome": "1.9.4",
     "@pandacss/dev": "^1.9.1",
     "@pandacss/eslint-plugin": "^0.3.2",
