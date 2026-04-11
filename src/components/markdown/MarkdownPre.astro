@@ -1,0 +1,15 @@
+---
+import { css } from "@styled-system/css";
+---
+
+<pre
+  class={css({
+    textStyle: "code",
+    padding: "4",
+    borderRadius: "2",
+    overflow: "[auto]",
+    backgroundColor: "background.secondary-hover",
+    marginBlock: "2",
+  })}
+  {...Astro.props}
+><slot /></pre>

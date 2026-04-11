@@ -2,6 +2,19 @@
 import { getCollection } from "astro:content";
 import { css } from "@styled-system/css";
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import MarkdownH1 from "../../components/markdown/MarkdownH1.astro";
+import MarkdownH2 from "../../components/markdown/MarkdownH2.astro";
+import MarkdownH3 from "../../components/markdown/MarkdownH3.astro";
+import MarkdownH4 from "../../components/markdown/MarkdownH4.astro";
+import MarkdownP from "../../components/markdown/MarkdownP.astro";
+import MarkdownOl from "../../components/markdown/MarkdownOl.astro";
+import MarkdownUl from "../../components/markdown/MarkdownUl.astro";
+import MarkdownLi from "../../components/markdown/MarkdownLi.astro";
+import MarkdownBlockquote from "../../components/markdown/MarkdownBlockquote.astro";
+import MarkdownA from "../../components/markdown/MarkdownA.astro";
+import MarkdownImg from "../../components/markdown/MarkdownImg.astro";
+import MarkdownPre from "../../components/markdown/MarkdownPre.astro";
+import MarkdownCode from "../../components/markdown/MarkdownCode.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -30,6 +43,22 @@ const { Content } = await post.render();
       color: "foreground.on-main-accent",
     })}
   >
-    <Content />
+    <Content
+      components={{
+        h1: MarkdownH1,
+        h2: MarkdownH2,
+        h3: MarkdownH3,
+        h4: MarkdownH4,
+        p: MarkdownP,
+        ol: MarkdownOl,
+        ul: MarkdownUl,
+        li: MarkdownLi,
+        blockquote: MarkdownBlockquote,
+        a: MarkdownA,
+        img: MarkdownImg,
+        pre: MarkdownPre,
+        code: MarkdownCode,
+      }}
+    />
   </div>
 </BlogLayout>

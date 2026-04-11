@@ -1,0 +1,16 @@
+---
+import { css } from "@styled-system/css";
+---
+
+<blockquote
+  class={css({
+    textStyle: "body",
+    borderLeft: "[4px solid]",
+    borderLeftColor: "foreground.secondary-accent",
+    paddingLeft: "4",
+    opacity: "[0.8]",
+  })}
+  {...Astro.props}
+>
+  <slot />
+</blockquote>

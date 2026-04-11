@@ -1,0 +1,15 @@
+---
+import { css } from "@styled-system/css";
+---
+
+<ul
+  class={css({
+    textStyle: "body",
+    listStyleType: "[circle]",
+    listStylePosition: "[inside]",
+    color: "foreground.on-main-accent",
+  })}
+  {...Astro.props}
+>
+  <slot />
+</ul>

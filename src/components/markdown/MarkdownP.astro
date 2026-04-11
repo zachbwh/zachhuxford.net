@@ -1,0 +1,13 @@
+---
+import { css } from "@styled-system/css";
+---
+
+<p
+  class={css({
+    textStyle: "body",
+    paddingBlock: "2",
+  })}
+  {...Astro.props}
+>
+  <slot />
+</p>

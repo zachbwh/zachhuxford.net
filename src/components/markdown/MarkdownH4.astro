@@ -1,0 +1,13 @@
+---
+import { css } from "@styled-system/css";
+---
+
+<h4
+  class={css({
+    textStyle: { base: "display-xs", sm: "display-sm" },
+    paddingBlock: "2",
+  })}
+  {...Astro.props}
+>
+  <slot />
+</h4>
