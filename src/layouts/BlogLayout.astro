@@ -8,9 +8,10 @@ interface Props {
   publishedTime: string;
   authors: string[];
   thumbnail: ImageMetadata;
+  slug: string;
 }
 
-const { title, description, publishedTime, authors, thumbnail } = Astro.props;
+const { title, description, publishedTime, authors, thumbnail, slug } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -35,7 +36,7 @@ const thumbnailClass = css({
 });
 ---
 
-<BaseLayout title={`Blog - ${title}`} description={description}>
+<BaseLayout title={`Blog - ${title}`} description={description} ogImage={`/og/${slug}.png`}>
   <article class={articleClass}>
     <div class={headerClass}>
       <h1 class={titleClass}>{title}</h1>

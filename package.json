@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "astro dev",
+    "generate:og": "./scripts/generate-all-og-images.sh",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "oxlint",

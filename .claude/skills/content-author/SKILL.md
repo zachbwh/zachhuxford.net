@@ -34,6 +34,22 @@ thumbnail: ./opengraph-image.jpeg
 
 After scaffolding, let the user know they need to add a thumbnail image (e.g., `opengraph-image.jpeg`) to the folder. Leave the post body for the author to write. Your role is to handle the technical scaffolding and assist with frontmatter, image references, and MDX syntax — not to author blog content.
 
+## OG image generation
+
+When a blog post has a thumbnail image in place, generate the OG image by running:
+
+```bash
+./scripts/generate-og-image.sh src/content/blog/<slug>/<thumbnail-filename> public/og/<slug>.png
+```
+
+Or generate OG images for all posts at once:
+
+```bash
+./scripts/generate-all-og-images.sh
+```
+
+These scripts require ImageMagick (`magick`) to be installed locally. They composite the site favicon onto the thumbnail with a gradient overlay. Run this after adding or updating a thumbnail — the generated images in `public/og/` should be committed to the repo since CI does not have ImageMagick.
+
 ## When invoked without a topic
 
 Ask the user what the blog post is about, then scaffold as above.
