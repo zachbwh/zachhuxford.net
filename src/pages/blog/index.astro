@@ -41,6 +41,7 @@ const autoColumnClass = css({ gridColumn: "auto" });
             <BlogCard
               href={`/blog/${post.slug}`}
               thumbnailSrc={post.data.thumbnail}
+              thumbnailAlt={post.data.thumbnailAlt}
               title={post.data.title}
               subtitle={post.data.description}
               date={post.data.publishedTime}

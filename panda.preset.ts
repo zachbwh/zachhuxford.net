@@ -238,6 +238,7 @@ export default definePreset({
           foreground: {
             "on-main-accent": { value: "oklch(1 0 0)" },
             "secondary-accent": { value: "oklch(.508 .118 165.612)" },
+            muted: { value: "oklch(0.8 0 0)" },
           },
           background: {
             "main-accent": {

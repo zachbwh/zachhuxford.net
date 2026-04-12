@@ -29,6 +29,7 @@ publishedTime: "YYYY-MM-DD"
 authors:
   - "Zach Huxford"
 thumbnail: ./opengraph-image.jpeg
+thumbnailAlt: "Descriptive alt text for the thumbnail image"
 ---
 ```
 
@@ -75,6 +76,7 @@ The folder name becomes the URL slug: `src/content/blog/my-post/` → `/blog/my-
 - `publishedTime` (required) — ISO date string, used for sorting and display
 - `authors` (required) — array of author names
 - `thumbnail` (required) — relative path to a colocated image; Astro processes it through `image()` so it gets optimization and type-safe `ImageMetadata` (with `src`, `width`, `height`)
+- `thumbnailAlt` (required) — alt text for the thumbnail image; used as `og:image:alt`, the `alt` attribute on blog cards and post pages, and as a visible caption beneath the thumbnail in blog posts
 
 ## Image references
 

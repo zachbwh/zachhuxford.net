@@ -4,13 +4,14 @@ import { css } from "@styled-system/css";
 interface Props {
   href: string;
   thumbnailSrc: ImageMetadata;
+  thumbnailAlt: string;
   title: string;
   subtitle?: string;
   date: string;
   author?: string;
 }
 
-const { href, thumbnailSrc, title, subtitle, date, author } = Astro.props;
+const { href, thumbnailSrc, thumbnailAlt, title, subtitle, date, author } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -39,7 +40,7 @@ const bodyClass = css({ textStyle: "body" });
   <div class={imageWrapperClass}>
     <img
       src={thumbnailSrc.src}
-      alt={title}
+      alt={thumbnailAlt}
       width={thumbnailSrc.width}
       height={thumbnailSrc.height}
       class={imageClass}

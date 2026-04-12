@@ -7,9 +7,10 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { title = "Zach Huxford", description = "SWE from NZ, based in London", ogImage } = Astro.props;
+const { title = "Zach Huxford", description = "SWE from NZ, based in London", ogImage, ogImageAlt } = Astro.props;
 
 const bodyClass = css({
   backgroundColor: "background.main-accent",
@@ -48,6 +49,7 @@ const mainWrapperClass = css({
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
     {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
+    {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />

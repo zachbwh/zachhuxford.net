@@ -8,10 +8,11 @@ interface Props {
   publishedTime: string;
   authors: string[];
   thumbnail: ImageMetadata;
+  thumbnailAlt: string;
   slug: string;
 }
 
-const { title, description, publishedTime, authors, thumbnail, slug } = Astro.props;
+const { title, description, publishedTime, authors, thumbnail, thumbnailAlt, slug } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -28,21 +29,32 @@ const articleClass = css({
 
 const headerClass = css({ textStyle: "body" });
 const titleClass = css({ textStyle: "display-xl" });
+const figureClass = css({
+  maxWidth: "breakpoint-md",
+  marginInline: "auto",
+});
 const thumbnailClass = css({
   width: "[100%]",
-  maxWidth: "breakpoint-md",
   borderRadius: "2",
-  marginInline: "auto",
+});
+const captionClass = css({
+  textStyle: "body",
+  textAlign: "center",
+  color: "foreground.muted",
+  paddingBlockStart: "1",
 });
 ---
 
-<BaseLayout title={`Blog - ${title}`} description={description} ogImage={`/og/${slug}.png`}>
+<BaseLayout title={`Blog - ${title}`} description={description} ogImage={`/og/${slug}.png`} ogImageAlt={thumbnailAlt}>
   <article class={articleClass}>
     <div class={headerClass}>
       <h1 class={titleClass}>{title}</h1>
       <span>{formattedDate}</span>
       {authors.map((author) => <span> · {author}</span>)}
-      <img src={thumbnail.src} alt={title} width={thumbnail.width} height={thumbnail.height} class={thumbnailClass} />
+      <figure class={figureClass}>
+        <img src={thumbnail.src} alt={thumbnailAlt} width={thumbnail.width} height={thumbnail.height} class={thumbnailClass} />
+        <figcaption class={captionClass}>{thumbnailAlt}</figcaption>
+      </figure>
     </div>
     <slot />
   </article>
