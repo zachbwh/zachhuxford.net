@@ -1,30 +1,21 @@
 ---
 name: astro-patterns
-description: Idiomatic Astro patterns for this project — linking with base path, images and assets, content collections, and routing. Use this skill whenever adding or modifying links/navigation, working with images or static assets, creating new pages or routes, or querying content collections. Also use when the user asks how something should be done "the Astro way" or when you're unsure about Astro conventions.
+description: Idiomatic Astro patterns for this project — linking, images and assets, content collections, and routing. Use this skill whenever adding or modifying links/navigation, working with images or static assets, creating new pages or routes, or querying content collections. Also use when the user asks how something should be done "the Astro way" or when you're unsure about Astro conventions.
 ---
 
 # Astro Patterns
 
-This project is an Astro 5 static site deployed to GitHub Pages with a base path. The patterns below cover the areas where Astro's conventions differ from other frameworks and where mistakes are easy to make.
+This project is an Astro 5 static site. The patterns below cover the areas where Astro's conventions differ from other frameworks and where mistakes are easy to make.
 
 When you're unsure about an Astro API or pattern not covered here, fetch `https://docs.astro.build/llms-full.txt` for comprehensive documentation.
 
-## Linking and base path
+## Linking
 
-This site is configured with `base: "/zachhuxford.io"` in `astro.config.mjs`. Astro does not automatically prepend the base path to `<a>` hrefs — unlike Next.js's `<Link>` component. You need to handle this manually.
-
-Use `import.meta.env.BASE_URL` to get the base path at build time. This value does **not** include a trailing slash, so add one between the base and the path segment:
+There is no built-in `<Link>` component in Astro. Standard `<a>` tags are the idiomatic way to link between pages. Use root-relative paths for internal links:
 
 ```astro
----
-const base = import.meta.env.BASE_URL;
----
-<a href={`${base}/about`}>About</a>
+<a href="/about">About</a>
 ```
-
-Apply this to every internal link — navigation, blog post links, any `<a>` pointing to a page within the site. External links (https://...) don't need it.
-
-There is no built-in `<Link>` component in Astro. Standard `<a>` tags are the idiomatic way to link between pages.
 
 ## Images and assets
 
@@ -135,4 +126,4 @@ Dynamic routes use bracket syntax with `getStaticPaths()`:
 - `src/pages/blog/[slug].astro` -> `/blog/:slug`
 - `src/pages/docs/[...slug].astro` -> `/docs/*` (catch-all/rest parameter)
 
-The `base` config automatically prefixes all generated routes at build time — you don't need to add it to file paths or `getStaticPaths` params. The base path only needs manual handling in `<a>` hrefs as described above.
+No base path is configured — routes map directly from the file structure to URLs.

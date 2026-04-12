@@ -4,8 +4,6 @@ import { css } from "@styled-system/css";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogCard from "../../components/BlogCard.astro";
 
-const base = import.meta.env.BASE_URL;
-
 const posts = await getCollection("blog");
 const sortedPosts = posts.sort(
   (a, b) =>
@@ -41,7 +39,7 @@ const autoColumnClass = css({ gridColumn: "auto" });
         sortedPosts.map((post) => (
           <li class={autoColumnClass}>
             <BlogCard
-              href={`${base}/blog/${post.slug}`}
+              href={`/blog/${post.slug}`}
               thumbnailSrc={post.data.thumbnail}
               title={post.data.title}
               subtitle={post.data.description}
