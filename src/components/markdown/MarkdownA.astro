@@ -1,0 +1,16 @@
+---
+import { css } from "@styled-system/css";
+
+const className = css({
+  color: "[inherit]",
+  textDecoration: "[underline]",
+  textUnderlineOffset: "[2px]",
+  _hover: {
+    opacity: "[0.8]",
+  },
+});
+---
+
+<a class={className} {...Astro.props}>
+  <slot />
+</a>

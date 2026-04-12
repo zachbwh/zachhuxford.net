@@ -1,0 +1,82 @@
+---
+import { css } from "@styled-system/css";
+import { Palette } from "@lucide/astro";
+
+const selectClass = css({
+  padding: "1",
+  borderRadius: "2",
+  color: "foreground.on-main-accent",
+  backgroundColor: "background.secondary",
+  cursor: "pointer",
+  textStyle: "body",
+  appearance: "[base-select]",
+  border: "[none]",
+  transition: "[background]",
+  transitionDuration: "fast",
+  _hover: {
+    backgroundColor: "background.secondary-hover",
+  },
+  _active: {
+    backgroundColor: "background.secondary-active",
+  },
+  width: "[min-content]",
+  "&::picker(select)": {
+    appearance: "[base-select]",
+    backgroundColor: "background.main-accent",
+    border: "outline",
+    borderRadius: "2",
+    shadow: "lg",
+    padding: "2",
+    gap: "1",
+    minWidth: "[120px]",
+  },
+  "& option": {
+    padding: "2",
+    borderRadius: "2",
+    color: "foreground.on-main-accent",
+    backgroundColor: "background.secondary",
+    _hover: {
+      backgroundColor: "background.secondary-hover",
+    },
+    _focus: {
+      // outline: "none",
+      backgroundColor: "background.secondary-hover",
+    },
+    "&::checkmark": {
+      content: "['\\2713']",
+    }
+  },
+});
+
+const buttonClass = css({ display: "flex", alignItems: "center", gap: "1" });
+const selectedContentClass = css({ srOnly: true });
+---
+
+<select id="theme-select" class={selectClass} aria-label="Change theme">
+  <button class={buttonClass}>
+    <Palette size={16} stroke-width={1.5} aria-hidden="true" />
+    <selectedcontent class={selectedContentClass} />
+  </button>
+  <option value="purple">Purple</option>
+  <option value="dark">Dark</option>
+</select>
+
+<script>
+  const select = document.getElementById("theme-select") as HTMLSelectElement;
+
+  select.value = document.documentElement.getAttribute("data-theme") ?? "purple";
+
+  select.addEventListener("change", () => {
+    const theme = select.value;
+    const apply = () => {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    };
+
+    if (document.startViewTransition) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
+  });
+</script>

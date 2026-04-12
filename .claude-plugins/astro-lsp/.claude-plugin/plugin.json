@@ -1,0 +1,14 @@
+{
+  "name": "astro-lsp",
+  "description": "Astro language server providing TypeScript diagnostics in .astro files.",
+  "version": "1.0.0",
+  "lspServers": {
+    "astro": {
+      "command": "npx",
+      "args": ["astro-ls", "--stdio"],
+      "extensionToLanguage": {
+        ".astro": "astro"
+      }
+    }
+  }
+}

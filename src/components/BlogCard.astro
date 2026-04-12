@@ -1,0 +1,63 @@
+---
+import { css } from "@styled-system/css";
+
+interface Props {
+  href: string;
+  thumbnailSrc: ImageMetadata;
+  title: string;
+  subtitle?: string;
+  date: string;
+  author?: string;
+}
+
+const { href, thumbnailSrc, title, subtitle, date, author } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+}).format(new Date(date));
+
+const linkClass = css({ display: "block", width: "[100%]" });
+const imageWrapperClass = css({ overflow: "hidden", borderRadius: "2", width: "[100%]" });
+const imageClass = css({
+  width: "[100%]",
+  transition: "transform",
+  transitionTimingFunction: "ease-in-out",
+  transitionDuration: "200ms",
+  display: "block",
+});
+const titleClass = css({
+  textStyle: "heading-sm",
+  paddingBlockStart: "2",
+  color: "foreground.on-main-accent",
+});
+const bodyClass = css({ textStyle: "body" });
+---
+
+<a href={href} class={linkClass + " group"}>
+  <div class={imageWrapperClass}>
+    <img
+      src={thumbnailSrc.src}
+      alt={title}
+      width={thumbnailSrc.width}
+      height={thumbnailSrc.height}
+      class={imageClass}
+      style="transition: transform 200ms ease-in-out;"
+    />
+  </div>
+  <h2 class={titleClass}>{title}</h2>
+  {subtitle && <p class={bodyClass}>{subtitle}</p>}
+  <p class={bodyClass}>{formattedDate}</p>
+  {author && <p class={bodyClass}>{author}</p>}
+</a>
+
+<style>
+  a:hover img {
+    transform: scale(1.05);
+  }
+  a:hover h2 {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+</style>

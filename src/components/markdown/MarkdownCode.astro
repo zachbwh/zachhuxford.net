@@ -1,0 +1,9 @@
+---
+import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "code",
+});
+---
+
+<code class={className} {...Astro.props}><slot /></code>

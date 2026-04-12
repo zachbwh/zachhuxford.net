@@ -1,9 +1,0 @@
-.rice .body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.rice .rice-pane {
-    text-align: center;
-}

@@ -5,46 +5,47 @@ on:
     branches:
       - master
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      # The @pandacss/eslint-plugin (loaded via oxlint jsPlugins) spawns esbuild
+      # to bundle the Panda config. The default kernel overcommit heuristic
+      # refuses fork() when the parent has a large virtual memory reservation,
+      # causing "spawn ENOMEM" even with plenty of free RAM.
+      # See: https://github.com/nodejs/node/issues/25382
+      - name: Allow memory overcommit
+        run: sudo sysctl -w vm.overcommit_memory=1
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version-file: ".tool-versions"
       - run: npm install
-      - run: npm test
+      - run: npm run lint
   build:
     runs-on: ubuntu-latest
-    env:
-      PUBLIC_URL: /zachhuxford.io
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version-file: ".tool-versions"
       - run: npm install
       - run: npm run build
-      - uses: actions/upload-pages-artifact@master
+      - uses: actions/upload-pages-artifact@v4
         with:
-          path: build
+          path: dist
   deploy:
-    # Add a dependency to the build job
-    needs: [build, test]
+    needs: [build, lint]
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
+      pages: write
+      id-token: write
 
-    # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

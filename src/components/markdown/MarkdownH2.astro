@@ -1,0 +1,12 @@
+---
+import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: { base: "display-sm", sm: "display-lg" },
+  paddingBlock: "2",
+});
+---
+
+<h2 class={className} {...Astro.props}>
+  <slot />
+</h2>

@@ -1,0 +1,40 @@
+{
+  "name": "zachhuxford-io",
+  "owner": {
+    "name": "Zach Huxford"
+  },
+  "plugins": [
+    {
+      "name": "astro-lsp",
+      "source": "./.claude-plugins/astro-lsp",
+      "description": "Astro language server providing TypeScript diagnostics in .astro files.",
+      "lspServers": {
+        "astro": {
+          "command": "npx",
+          "args": ["astro-ls", "--stdio"],
+          "extensionToLanguage": {
+            ".astro": "astro"
+          }
+        }
+      }
+    },
+    {
+      "name": "oxlint-lsp",
+      "source": "./.claude-plugins/oxlint-lsp",
+      "description": "Oxlint language server providing lint diagnostics.",
+      "lspServers": {
+        "oxlint": {
+          "command": "npx",
+          "args": ["oxlint", "--lsp"],
+          "extensionToLanguage": {
+            ".astro": "astro",
+            ".ts": "typescript",
+            ".tsx": "typescriptreact",
+            ".js": "javascript",
+            ".jsx": "javascriptreact"
+          }
+        }
+      }
+    }
+  ]
+}

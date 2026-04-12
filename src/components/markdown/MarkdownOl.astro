@@ -1,0 +1,14 @@
+---
+import { css } from "@styled-system/css";
+
+const className = css({
+  textStyle: "body",
+  listStyleType: "[decimal]",
+  listStylePosition: "[inside]",
+  color: "foreground.on-main-accent",
+});
+---
+
+<ol class={className} {...Astro.props}>
+  <slot />
+</ol>

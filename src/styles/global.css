@@ -1,0 +1,14 @@
+@layer reset, base, tokens, recipes, utilities;
+
+:root {
+  --font-karla: "Karla", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-inconsolata: "Inconsolata", monospace;
+}
+
+/* Theme transition via View Transition API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+}

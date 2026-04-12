@@ -1,0 +1,11 @@
+---
+import { css } from "@styled-system/css";
+
+const className = css({
+  paddingBlock: "1",
+});
+---
+
+<li class={className} {...Astro.props}>
+  <slot />
+</li>
