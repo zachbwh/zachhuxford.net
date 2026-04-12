@@ -1,14 +1,15 @@
 {
-  "enabledPlugins": {
-    "astro-lsp@zachhuxford-io": true,
-    "oxlint-lsp@zachhuxford-io": true
-  },
-  "extraKnownMarketplaces": {
-    "zachhuxford-io": {
-      "source": {
-        "source": "github",
-        "repo": "zachbwh/zachhuxford.io"
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .github/setup.js"
+          }
+        ]
       }
-    }
+    ]
   }
 }
