@@ -5,5 +5,7 @@ export default defineConfig({
   integrations: [mdx()],
   output: "static",
   base: "/zachhuxford.io",
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+  },
 });
