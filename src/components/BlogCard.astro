@@ -20,12 +20,12 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
 }).format(new Date(date));
 
 const linkClass = css({ display: "block", width: "[100%]" });
-const imageWrapperClass = css({ overflow: "hidden", borderRadius: "2", width: "[100%]" });
+const imageWrapperClass = css({ overflow: "hidden", borderRadius: "2", borderWidth: '1', borderColor: 'white.100', width: "[100%]" });
 const imageClass = css({
   width: "[100%]",
   transition: "transform",
-  transitionTimingFunction: "ease-in-out",
-  transitionDuration: "200ms",
+  transitionTimingFunction: "in-out",
+  transitionDuration: "fast",
   display: "block",
 });
 const titleClass = css({
