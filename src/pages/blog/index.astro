@@ -41,7 +41,7 @@ const autoColumnClass = css({ gridColumn: "auto" });
         sortedPosts.map((post) => (
           <li class={autoColumnClass}>
             <BlogCard
-              href={`${base}blog/${post.slug}`}
+              href={`${base}/blog/${post.slug}`}
               thumbnailSrc={post.data.thumbnail}
               title={post.data.title}
               subtitle={post.data.description}
