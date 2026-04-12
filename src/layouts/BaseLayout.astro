@@ -46,7 +46,8 @@ const mainWrapperClass = css({
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).href} />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
