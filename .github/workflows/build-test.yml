@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure swap
-        uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c # v1.0
-        with:
-          swap-size-gb: 4
+      - name: Allow memory overcommit
+        run: sudo sysctl -w vm.overcommit_memory=1
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
