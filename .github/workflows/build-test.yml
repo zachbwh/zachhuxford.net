@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # The @pandacss/eslint-plugin (loaded via oxlint jsPlugins) spawns esbuild
+      # to bundle the Panda config. The default kernel overcommit heuristic
+      # refuses fork() when the parent has a large virtual memory reservation,
+      # causing "spawn ENOMEM" even with plenty of free RAM.
+      # See: https://github.com/nodejs/node/issues/25382
       - name: Allow memory overcommit
         run: sudo sysctl -w vm.overcommit_memory=1
       - uses: actions/setup-node@v4
