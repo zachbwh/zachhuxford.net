@@ -2,10 +2,12 @@
 import { css } from "@styled-system/css";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
+const base = import.meta.env.BASE_URL;
+
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "My Story", href: "/my-story" },
-  { label: "Blog", href: "/blog" },
+  { label: "Home", href: `${base}` },
+  { label: "My Story", href: `${base}my-story` },
+  { label: "Blog", href: `${base}blog` },
 ];
 
 const navigation = css({
