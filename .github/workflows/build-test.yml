@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure swap
-        uses: actionhippie/swap@v1
+        uses: pierotofy/set-swap-space@master
         with:
-          size: 4G
+          swap-size-gb: 4
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
