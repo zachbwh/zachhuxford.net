@@ -6,11 +6,9 @@
   --font-inconsolata: "Inconsolata", monospace;
 }
 
-/* Theme transition via View Transition API */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 200ms;
-  animation-timing-function: ease-in-out;
+  animation: none;
 }
 
 @view-transition {
@@ -24,19 +22,9 @@
 }
 
 ::view-transition-old(blog-thumbnail) {
-  animation: 250ms ease-out both fade-out;
+  animation: 250ms ease-out both;
 }
 
 ::view-transition-new(blog-thumbnail) {
-  animation: 250ms 250ms ease-in both fade-in;
-}
-
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  animation: 250ms 250ms ease-in both;
 }

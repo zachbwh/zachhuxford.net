@@ -61,19 +61,10 @@ const mainWrapperClass = css({
       href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300..700&family=Karla:wght@300..700&family=Montserrat:wght@300..700&display=swap"
       rel="stylesheet"
     />
-    <!-- Apply saved theme before first paint and before view transition snapshot -->
+    <!-- Apply saved theme before first paint -->
     <script is:inline>
-      (function() {
-        var saved = localStorage.getItem("theme");
-        if (saved) document.documentElement.setAttribute("data-theme", saved);
-        // Re-apply theme before the view transition reveals the new page
-        if (typeof addEventListener !== "undefined") {
-          addEventListener("pagereveal", function() {
-            var s = localStorage.getItem("theme");
-            if (s) document.documentElement.setAttribute("data-theme", s);
-          });
-        }
-      })();
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
     </script>
   </head>
   <body class={bodyClass}>
