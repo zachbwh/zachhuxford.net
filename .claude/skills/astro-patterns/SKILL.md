@@ -31,7 +31,24 @@ import heroImg from '../assets/hero.jpg';
 <Image src={heroImg} alt="Hero image" />
 ```
 
-The import gives you an `ImageMetadata` object with `src`, `width`, and `height`. Astro handles optimization and generates appropriate HTML attributes.
+The import gives you an `ImageMetadata` object. Pass it directly to `<Image>` via `src` — don't destructure `.src`, `.width`, `.height` onto a plain `<img>`.
+
+**Responsive images** — this project uses a shared `IMAGE_WIDTHS` constant from `src/consts.ts` for all `<Image>` components. All image components should use the same set of widths so that the same source image generates identical output files across pages, enabling browser cache hits when users navigate between them (e.g., blog list → blog post). Check `src/consts.ts` for the current values — they should reflect the actual layout widths the images render at. If layouts change, update the constant to match.
+
+For below-the-fold images, use `sizes="auto"` with `loading="lazy"` so the browser picks the right `srcset` entry based on actual rendered size:
+
+```astro
+---
+import { IMAGE_WIDTHS } from '../consts';
+---
+<Image src={img} alt="..." widths={[...IMAGE_WIDTHS]} sizes="auto" loading="lazy" />
+```
+
+For above-the-fold images (hero/banner), provide an explicit `sizes` value instead of lazy loading so the browser can fetch the right variant immediately:
+
+```astro
+<Image src={img} alt="..." widths={[...IMAGE_WIDTHS]} sizes="min(768px, calc(100vw - 40px))" />
+```
 
 For cases where you need the optimized URL without rendering an `<img>` tag (e.g., for CSS backgrounds or meta tags), use `getImage()`:
 

@@ -101,7 +101,7 @@ The rendering pipeline flows through these files:
 - `src/layouts/BlogLayout.astro` — wraps each post with title, date, authors, and thumbnail
 - `src/components/BlogCard.astro` — card component for the blog index
 
-The `thumbnail` prop is `ImageMetadata` (not a string), so consumers access `.src`, `.width`, and `.height`. When adding new frontmatter fields that reference images, use the `image()` schema helper and pass the full `ImageMetadata` object through to components.
+The `thumbnail` prop is `ImageMetadata` (not a string) — pass it directly to Astro's `<Image>` component via `src`. When adding new frontmatter fields that reference images, use the `image()` schema helper and pass the full `ImageMetadata` object through to components. See the astro-patterns skill for responsive image conventions.
 
 ## Custom markdown components
 
