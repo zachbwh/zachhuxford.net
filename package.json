@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
-    "@lucide/astro": "^1.7.0",
+    "@lucide/astro": "^1.8.0",
     "astro": "^6.1.8",
     "sharp": "^0.34.5"
   },
@@ -26,8 +26,8 @@
     "@astrojs/language-server": "^2.16.6",
     "@pandacss/dev": "^1.9.1",
     "@pandacss/eslint-plugin": "^0.3.2",
-    "@types/node": "^20",
-    "oxfmt": "^0.43.0",
+    "@types/node": "^24.7.0",
+    "oxfmt": "^0.45.0",
     "oxlint": "^1.58.0",
     "oxlint-tsgolint": "^0.19.0",
     "typescript": "^5.9.3"
