@@ -3,9 +3,7 @@ import { css } from "@styled-system/css";
 import { stack } from "@styled-system/patterns";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Avatar from "../components/Avatar.astro";
-
-const GRAVATAR_URL =
-  "https://gravatar.com/avatar/4fe732c23f15dea9070cce32e4e3e0c23b333d83abca1bb77fb3792f91927966?s=300";
+import avatarSrc from "../assets/avatar.jpg";
 
 const sectionClass = stack({
   direction: "column",
@@ -22,7 +20,7 @@ const bodyClass = css({ textStyle: "body" });
 <BaseLayout title="My Story — Zach Huxford" description="The story of Zach Huxford">
   <section class={sectionClass}>
     <div class={headerClass}>
-      <Avatar size="lg" src={GRAVATAR_URL} />
+      <Avatar size="lg" src={avatarSrc} />
       <h1 class={headingClass}>
         My Story<span class={accentClass}>.</span>
       </h1>

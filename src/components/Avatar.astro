@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { cva, type RecipeVariantProps } from "@styled-system/css";
 
 const avatarRecipe = cva({
@@ -15,16 +16,30 @@ const avatarRecipe = cva({
   },
 });
 
+const sizeWidths = {
+  sm: 32,
+  md: 56,
+  lg: 80,
+} as const;
+
 type AvatarVariants = RecipeVariantProps<typeof avatarRecipe>;
 type SizeVariants = NonNullable<NonNullable<AvatarVariants>["size"]>;
 
 interface Props {
   size: SizeVariants;
-  src: string;
+  src: ImageMetadata;
   alt?: string;
 }
 
 const { size, src, alt = "Avatar" } = Astro.props;
 ---
 
-<img src={src} alt={alt} class={avatarRecipe({ size })} />
+<Image
+  src={src}
+  alt={alt}
+  width={sizeWidths[size]}
+  height={sizeWidths[size]}
+  format="avif"
+  densities={[1, 2]}
+  class={avatarRecipe({ size })}
+/>
