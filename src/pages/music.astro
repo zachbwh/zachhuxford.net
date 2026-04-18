@@ -58,11 +58,11 @@ const skeletonInnerClass = css({
     }
 
     socket.onmessage = function(message) {
-      var recentTrack = JSON.parse(message.data).recentTrack;
+      try {
+        const recentTrack = JSON.parse(message.data).recentTrack;
 
-      if (recentTrack.name) {
-        console.log('recent track', recentTrack)
-        document.getElementById('track')!.textContent = recentTrack.name
+        if (recentTrack.name) {
+          document.getElementById('track')!.textContent = recentTrack.name
         document.getElementById('album')!.textContent = recentTrack.album['#text']
         document.getElementById('artist')!.textContent = recentTrack.artist["#text"]
 
@@ -75,7 +75,8 @@ const skeletonInnerClass = css({
         }
 
         document.getElementById('listening-to')?.removeAttribute('data-loading')
-      }
+        }
+      } catch { /* ignore malformed messages */ }
     };
   </script>
   <section class={sectionClass} id="listening-to" data-loading aria-label="Recently played music">
@@ -85,7 +86,6 @@ const skeletonInnerClass = css({
         <h1>Zach Huxford</h1>
         <p class={subtitleClass}><span id="listening-subtitle" class={skeletonInnerClass}>Loading timing...</span></p>
       </hgroup>
-      
     </div>
     <dl class={dlClass}>
       <dt class={dtClass}><MusicIcon class={icon} aria-hidden="true" /><span class={srOnly}>Track</span></dt>
