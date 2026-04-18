@@ -1,0 +1,100 @@
+---
+import { css } from "@styled-system/css";
+import { stack } from "@styled-system/patterns";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Avatar from "../components/Avatar.astro";
+import avatarSrc from "../assets/avatar.jpg";
+import { Disc, Music as MusicIcon, User } from "@lucide/astro";
+
+const sectionClass = stack({
+  color: "foreground.on-main-accent",
+  marginInline: 'auto',
+  backgroundColor: 'background.secondary',
+  marginBlockStart: '20',
+  sm: {
+    maxInlineSize: '[500px]',
+  }
+});
+
+const headerClass = css({ display: "flex", alignItems: "center", gap: "6" });
+const headingGroupClass = css({ display: "flex", flexDirection: "column", gap: "2" });
+const subtitleClass = css({ textStyle: "body" });
+const dlClass = css({ textStyle: "body", display: "grid", gridTemplateColumns: "auto 1fr", gap: "2", alignItems: "center" });
+const dtClass = css({ display: "flex", alignItems: "center", gap: "1", lineClamp: 1 });
+const srOnly = css({ srOnly: true });
+const icon = css({ display: "inline-block" })
+const footerClass = css({ color: "foreground.muted", inlineSize: '[max-content]', marginInline: 'auto', marginBlockStart: '4' });
+const skeletonInnerClass = css({
+  _loading: {
+    display: "inline-block",
+    color: "[transparent]",
+    background: "white.200",
+    lineHeight: "1",
+    borderRadius: "max",
+    animation: "pulse 1.5s ease-in-out infinite",
+  },
+});
+---
+
+<BaseLayout title="Music — Zach Huxford" description="What Zach Huxford is playing">
+  <script>
+    const WEBSOCKET_API_DOMAIN = "1wsb3hv9ug.execute-api.us-east-1.amazonaws.com/prod"
+    const socket = new WebSocket(`wss://${WEBSOCKET_API_DOMAIN}`);
+
+    socket.addEventListener('open', function (event) {
+      socket.send("{\"action\": \"requestRecentTrack\"}");
+    });
+
+    function relativeTime(uts: number): string {
+      const rtf = new Intl.RelativeTimeFormat("en-NZ", { numeric: "auto" });
+      const seconds = Math.floor(Date.now() / 1000) - uts;
+      if (seconds < 60) return rtf.format(-seconds, "second");
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return rtf.format(-minutes, "minute");
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return rtf.format(-hours, "hour");
+      const days = Math.floor(hours / 24);
+      return rtf.format(-days, "day");
+    }
+
+    socket.onmessage = function(message) {
+      var recentTrack = JSON.parse(message.data).recentTrack;
+
+      if (recentTrack.name) {
+        console.log('recent track', recentTrack)
+        document.getElementById('track')!.textContent = recentTrack.name
+        document.getElementById('album')!.textContent = recentTrack.album['#text']
+        document.getElementById('artist')!.textContent = recentTrack.artist["#text"]
+
+        const isNowPlaying = recentTrack['@attr']?.nowplaying === 'true';
+        const subtitle = document.getElementById('listening-subtitle')!;
+        if (isNowPlaying) {
+          subtitle.textContent = "Playing now";
+        } else if (recentTrack.date?.uts) {
+          subtitle.textContent = relativeTime(Number(recentTrack.date.uts));
+        }
+
+        document.getElementById('listening-to')?.removeAttribute('data-loading')
+      }
+    };
+  </script>
+  <section class={sectionClass} id="listening-to" data-loading aria-label="Recently played music">
+    <div class={headerClass}>
+      <Avatar size="lg" src={avatarSrc} />
+      <hgroup class={headingGroupClass}>
+        <h1>Zach Huxford</h1>
+        <p class={subtitleClass}><span id="listening-subtitle" class={skeletonInnerClass}>Loading timing...</span></p>
+      </hgroup>
+      
+    </div>
+    <dl class={dlClass}>
+      <dt class={dtClass}><MusicIcon class={icon} aria-hidden="true" /><span class={srOnly}>Track</span></dt>
+      <dd><span id="track" class={skeletonInnerClass}>Loading track...</span></dd>
+      <dt class={dtClass}><Disc class={icon} aria-hidden="true" /><span class={srOnly}>Album</span></dt>
+      <dd><span id="album" class={skeletonInnerClass}>Loading album...</span></dd>
+      <dt class={dtClass}><User class={icon} aria-hidden="true" /><span class={srOnly}>Artist</span></dt>
+      <dd><span id="artist" class={skeletonInnerClass}>Loading artist...</span></dd>
+    </dl>
+    <p class={footerClass}>Powered by <a href="https://www.last.fm">Last.fm</a></p>
+  </section>
+</BaseLayout>

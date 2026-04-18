@@ -22,6 +22,7 @@ export default defineConfig({
   conditions: {
     darkTheme: "[data-theme=dark] &",
     purpleTheme: "[data-theme=purple] &",
+    loading: "[data-loading] &",
   },
 
   presets: [websitePreset],
