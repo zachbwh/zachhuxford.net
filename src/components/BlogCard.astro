@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { css } from "@styled-system/css";
 
 interface Props {
@@ -42,11 +43,9 @@ const bodyClass = css({ textStyle: "body" });
 ---
 
 <a href={href} class={linkClass + " group"}>
-  <img
-    src={thumbnailSrc.src}
+  <Image
+    src={thumbnailSrc}
     alt={thumbnailAlt}
-    width={thumbnailSrc.width}
-    height={thumbnailSrc.height}
     class={imageClass}
   />
   <h2 class={titleClass}>{title}</h2>

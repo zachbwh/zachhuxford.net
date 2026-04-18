@@ -1,5 +1,13 @@
 ---
+import { Image } from "astro:assets";
 import { css } from "@styled-system/css";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
 
 const className = css({
   width: "[100%]",
@@ -8,4 +16,4 @@ const className = css({
 });
 ---
 
-<img class={className} {...Astro.props} />
+<Image src={src} alt={alt} class={className} />
