@@ -24,7 +24,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@astrojs/language-server": "^2.16.6",
-    "@pandacss/dev": "^1.9.1",
+    "@pandacss/dev": "^1.10.0",
     "@pandacss/eslint-plugin": "^0.3.2",
     "@types/node": "^24.7.0",
     "oxfmt": "^0.45.0",
