@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { css } from "@styled-system/css";
+import { IMAGE_WIDTHS } from "../../consts";
 
 interface Props {
   src: ImageMetadata;
@@ -16,4 +17,4 @@ const className = css({
 });
 ---
 
-<Image src={src} alt={alt} class={className} />
+<Image src={src} alt={alt} widths={[...IMAGE_WIDTHS]} sizes="auto" loading="lazy" class={className} />

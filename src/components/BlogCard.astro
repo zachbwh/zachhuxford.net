@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { css } from "@styled-system/css";
+import { IMAGE_WIDTHS } from "../consts";
 
 interface Props {
   href: string;
@@ -46,6 +47,9 @@ const bodyClass = css({ textStyle: "body" });
   <Image
     src={thumbnailSrc}
     alt={thumbnailAlt}
+    widths={[...IMAGE_WIDTHS]}
+    sizes="auto"
+    loading="lazy"
     class={imageClass}
   />
   <h2 class={titleClass}>{title}</h2>
