@@ -1,5 +1,4 @@
 import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
-import pandaPreset from '@pandacss/preset-panda'
 import websitePreset from "./panda.preset";
 
 const globalCss = defineGlobalStyles({
@@ -25,7 +24,7 @@ export default defineConfig({
     purpleTheme: "[data-theme=purple] &",
   },
 
-  presets: [pandaPreset, websitePreset],
+  presets: [websitePreset],
 
   strictTokens: true,
   strictPropertyValues: true,
