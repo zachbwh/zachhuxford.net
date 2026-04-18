@@ -40,6 +40,7 @@ const autoColumnClass = css({ gridColumn: "auto" });
           <li class={autoColumnClass}>
             <BlogCard
               href={`/blog/${post.id}`}
+              slug={post.id}
               thumbnailSrc={post.data.thumbnail}
               thumbnailAlt={post.data.thumbnailAlt}
               title={post.data.title}

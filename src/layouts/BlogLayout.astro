@@ -42,7 +42,6 @@ const thumbnailClass = css({
   borderStyle: 'solid',
   borderWidth: '1',
   borderColor: 'white.100',
-  viewTransitionName: 'blog-thumbnail'
 });
 const captionClass = css({
   textStyle: "body",
@@ -59,7 +58,7 @@ const captionClass = css({
       <span>{formattedDate}</span>
       {authors.map((author) => <span> · {author}</span>)}
       <figure class={figureClass}>
-        <Image src={thumbnail} alt={thumbnailAlt} widths={[...IMAGE_WIDTHS]} sizes="min(768px, calc(100vw - 40px))" class={thumbnailClass} />
+        <Image src={thumbnail} alt={thumbnailAlt} widths={[...IMAGE_WIDTHS]} sizes="min(768px, calc(100vw - 40px))" class={thumbnailClass} style={`view-transition-name: blog-thumbnail-${slug}`} />
         <figcaption class={captionClass}>{thumbnailAlt}</figcaption>
       </figure>
     </div>

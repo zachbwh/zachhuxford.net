@@ -5,6 +5,7 @@ import { IMAGE_WIDTHS } from "../consts";
 
 interface Props {
   href: string;
+  slug: string;
   thumbnailSrc: ImageMetadata;
   thumbnailAlt: string;
   title: string;
@@ -13,7 +14,7 @@ interface Props {
   author?: string;
 }
 
-const { href, thumbnailSrc, thumbnailAlt, title, subtitle, date, author } = Astro.props;
+const { href, slug, thumbnailSrc, thumbnailAlt, title, subtitle, date, author } = Astro.props;
 
 const formattedDate = new Intl.DateTimeFormat("en-GB", {
   day: "2-digit",
@@ -29,7 +30,6 @@ const imageClass = css({
   borderWidth: '1',
   borderColor: 'white.100',
   borderStyle: 'solid',
-  viewTransitionName: 'blog-thumbnail',
 });
 const titleClass = css({
   textStyle: "heading-sm",
@@ -51,6 +51,7 @@ const bodyClass = css({ textStyle: "body" });
     sizes="auto"
     loading="lazy"
     class={imageClass}
+    style={`view-transition-name: blog-thumbnail-${slug}`}
   />
   <h2 class={titleClass}>{title}</h2>
   {subtitle && <p class={bodyClass}>{subtitle}</p>}

@@ -6,25 +6,17 @@
   --font-inconsolata: "Inconsolata", monospace;
 }
 
-::view-transition-old(root),
+/* ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
-}
+} */
 
 @view-transition {
   navigation: auto;
 }
 
 /* Blog thumbnail: bouncy curved transition */
-::view-transition-group(blog-thumbnail) {
+::view-transition-group(blog-thumbnail-*) {
   animation-duration: 500ms;
   animation-timing-function: cubic-bezier(0.32, 1.45, 0.58, 1);
-}
-
-::view-transition-old(blog-thumbnail) {
-  animation: 250ms ease-out both;
-}
-
-::view-transition-new(blog-thumbnail) {
-  animation: 250ms 250ms ease-in both;
 }
