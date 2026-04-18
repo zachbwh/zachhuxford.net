@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { css } from "@styled-system/css";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import MarkdownH1 from "../../components/markdown/MarkdownH1.astro";
@@ -19,13 +19,13 @@ import MarkdownCode from "../../components/markdown/MarkdownCode.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const contentWrapperClass = css({
   display: "flex",
@@ -42,7 +42,7 @@ const contentWrapperClass = css({
   authors={post.data.authors}
   thumbnail={post.data.thumbnail}
   thumbnailAlt={post.data.thumbnailAlt}
-  slug={post.slug}
+  slug={post.id}
 >
   <div class={contentWrapperClass}>
     <Content

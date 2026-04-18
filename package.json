@@ -16,9 +16,9 @@
     "fmt:check": "oxfmt --check"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/mdx": "^5.0.3",
     "@lucide/astro": "^1.7.0",
-    "astro": "^5.7.2",
+    "astro": "^6.1.8",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
