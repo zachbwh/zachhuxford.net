@@ -1,5 +1,5 @@
 ---
-import { css } from "@styled-system/css";
+import { css, cva } from "@styled-system/css";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 const navItems = [
@@ -8,6 +8,8 @@ const navItems = [
   { label: "Music", href: "/music" },
   { label: "Blog", href: "/blog" },
 ];
+
+const currentPath = Astro.url.pathname;
 
 const navigation = css({
   width: "[100%]",
@@ -28,25 +30,35 @@ const navigationItem = css({
   display: "inline-block",
 });
 
-const navigationLink = css({
-  borderRadius: "2",
-  color: "foreground.on-main-accent",
-  textStyle: "body",
-  outlineWidth: "0",
-  position: "relative",
-  _hover: {
-    textDecoration: "underline",
+const navigationLink = cva({
+  base: {
+    borderRadius: "2",
+    color: "foreground.on-main-accent",
+    textStyle: "body",
+    outlineWidth: "0",
+    position: "relative",
+    textUnderlineOffset: "4px",
+    _hover: {
+      textDecoration: "underline",
+    },
+    _focusVisible: {
+      outline: 'none',
+      _before: {
+        content: '""',
+        position: "absolute",
+        inset: '-2',
+        borderRadius: "[inherit]",
+        outlineWidth: "2",
+        outlineStyle: "solid",
+        outlineColor: "foreground.on-main-accent",
+      },
+    },
   },
-  _focusVisible: {
-    outline: 'none',
-    _before: {
-      content: '""',
-      position: "absolute",
-      inset: '-2',
-      borderRadius: "[inherit]",
-      outlineWidth: "2",
-      outlineStyle: "solid",
-      outlineColor: "foreground.on-main-accent",
+  variants: {
+    active: {
+      true: {
+        textDecoration: "underline",
+      },
     },
   },
 });
@@ -55,13 +67,18 @@ const navigationLink = css({
 <nav class={navigation}>
   <ul class={navigationList}>
     {
-      navItems.map((item) => (
-        <li class={navigationItem}>
-          <a href={item.href} class={navigationLink}>
-            {item.label}
-          </a>
-        </li>
-      ))
+      navItems.map((item) => {
+        const isActive = item.href === "/"
+          ? currentPath === "/"
+          : currentPath.startsWith(item.href);
+        return (
+          <li class={navigationItem}>
+            <a href={item.href} class={navigationLink({ active: isActive })}>
+              {item.label}
+            </a>
+          </li>
+        );
+      })
     }
   </ul>
   <ThemeSwitcher />
