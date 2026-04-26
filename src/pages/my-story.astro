@@ -12,7 +12,7 @@ const sectionClass = stack({
 });
 
 const headerClass = css({ display: "flex", alignItems: "center", gap: "6" });
-const headingClass = css({ textStyle: "display-md", sm: { textStyle: "display-lg" } });
+const headingClass = css({ textStyle: { base: "display-sm", sm: "display-lg" } });
 const accentClass = css({ color: "foreground.secondary-accent" });
 const bodyClass = css({ textStyle: "body" });
 ---

@@ -22,7 +22,7 @@ const gridClass = css({
 });
 
 const fullWidthClass = css({ gridColumn: "1 / -1" });
-const headingClass = css({ textStyle: "display-lg" });
+const headingClass = css({ textStyle: { base: "display-sm", sm: "display-lg" } });
 const accentClass = css({ color: "foreground.secondary-accent" });
 const autoColumnClass = css({ gridColumn: "auto" });
 ---
